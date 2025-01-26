@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poch Vibolvatanak</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="music-player">
+        <div class="music-player-header">
+            <div class="player-content">
+                <div class="song-info">
+                    <img src="assets/media/album-art.jpg" alt="Album Art" class="album-art">
+                    <div class="audio-visualizer">
+                        <div class="visualizer-bar"></div>
+                        <div class="visualizer-bar"></div>
+                        <div class="visualizer-bar"></div>
+                    </div>
+                    <div class="song-details">
+                        <div class="song-title">BADDERS</div>
+                        <div class="song-artist">PEEKABOO, FLOWDAN</div>
+                    </div>
+                </div>
+                <div class="player-controls">
+                    <button id="prev" class="control-btn">
+                        <i class="fas fa-backward-step"></i>
+                    </button>
+                    <button class="music-toggle-btn">
+                        <i class="fas fa-play" id="play-btn"></i>
+                    </button>
+                    <button id="next" class="control-btn">
+                        <i class="fas fa-forward-step"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="music-minimize-btn">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            <div class="logo-box">
+                <span class="logo-text">PV</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="assets/media/hero-bg.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="gradient-reveal">
+                    <span class="reveal-text">Hi, I'm</span>
+                    <span class="reveal-text gradient-text">Poch Vibolvatanak</span>
+                </h1>
+                <div class="role-wrapper">
+                    <span class="role-text"></span>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">ABOUT ME</h2>
+                <div class="about-content">
+                    <div class="skills">
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>DEVELOPMENT</h3>
+                            <p>Full-stack development with modern technologies</p>
+                        </div>
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="skill-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3>DESIGN</h3>
+                            <p>Creative and intuitive user interfaces</p>
+                        </div>
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="skill-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>INNOVATION</h3>
+                            <p>Pushing boundaries with cutting-edge solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">FEATURED PROJECTS</h2>
+                <div class="project-grid">
+                    <div class="project-card" data-aos="fade-up">
+                        <img src="assets/media/project1.jpg" alt="Project 1" class="project-image">
+                        <div class="project-overlay">
+                            <h3 class="project-title">Project One</h3>
+                            <p class="project-description">A brief description of the project and its key features</p>
+                            <div class="project-links">
+                                <a href="#" class="cta-button primary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <img src="assets/media/project2.jpg" alt="Project 2" class="project-image">
+                        <div class="project-overlay">
+                            <h3 class="project-title">Project Two</h3>
+                            <p class="project-description">A brief description of the project and its key features</p>
+                            <div class="project-links">
+                                <a href="#" class="cta-button primary">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">SKILLS & TECHNOLOGIES</h2>
+                
+                <div class="skills-track skills-track-left">
+                    <div class="skill-logo">
+                        <img src="assets/icons/react.svg" alt="React">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/nodejs.svg" alt="Node.js">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/javascript.svg" alt="JavaScript">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/typescript.svg" alt="TypeScript">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/python.svg" alt="Python">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/aws.svg" alt="AWS">
+                    </div>
+                </div>
+                
+                <div class="skills-track skills-track-right">
+                    <div class="skill-logo">
+                        <img src="assets/icons/docker.svg" alt="Docker">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/kubernetes.svg" alt="Kubernetes">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/mongodb.svg" alt="MongoDB">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/postgresql.svg" alt="PostgreSQL">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/redis.svg" alt="Redis">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/graphql.svg" alt="GraphQL">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">GET IN TOUCH</h2>
+                <form class="contact-form" data-aos="fade-up">
+                    <input type="text" placeholder="YOUR NAME" required>
+                    <input type="email" placeholder="YOUR EMAIL" required>
+                    <textarea placeholder="YOUR MESSAGE" required></textarea>
+                    <button type="submit" class="cta-button primary">SEND MESSAGE</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+</body>
+</html>

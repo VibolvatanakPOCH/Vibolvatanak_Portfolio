@@ -1,0 +1,806 @@
+/* Modern CSS Reset and Variables */
+:root {
+    --primary-color: #E43D3D;
+    --secondary-color: #1A1A1A;
+    --accent-color: #FF4D4D;
+    --text-color: #FFFFFF;
+    --bg-color: #000000;
+    --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-box {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+}
+
+.logo-text {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    opacity: 0.8;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(0.5) contrast(1.2);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-reveal {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.reveal-text {
+    position: relative;
+    display: block;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(
+        90deg,
+        #ff3d00 0%,
+        #00e5ff 50%,
+        #2979ff 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.4s forwards,
+               gradient 4s linear 1.2s infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.cta-button {
+    padding: 1rem 3rem;
+    border: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.cta-button.primary {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(228, 61, 61, 0.2);
+}
+
+/* About Section */
+.about {
+    padding: 10rem 0;
+    background: var(--secondary-color);
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 3rem;
+    border-radius: 4px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Projects Section */
+.projects {
+    padding: 10rem 0;
+    background: var(--bg-color);
+    position: relative;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.project-card {
+    position: relative;
+    background: var(--secondary-color);
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    transition: transform 0.3s ease;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(100%);
+}
+
+.project-card:hover .project-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.project-card:hover {
+    transform: scale(1.02);
+}
+
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.project-description {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+/* Contact Section */
+.contact {
+    padding: 10rem 0;
+    background: var(--secondary-color);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(228, 61, 61, 0.2);
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
+    max-width: 90vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-player-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    gap: 1rem;
+}
+
+.player-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    white-space: nowrap;
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.album-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.audio-visualizer {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.visualizer-bar {
+    width: 3px;
+    height: 24px;
+    background-color: #ff4444;
+    border-radius: 1px;
+    transform-origin: bottom;
+}
+
+.visualizer-bar:nth-child(1) { animation: visualizer1 0.8s infinite; }
+.visualizer-bar:nth-child(2) { animation: visualizer2 0.8s infinite; }
+.visualizer-bar:nth-child(3) { animation: visualizer3 0.8s infinite; }
+
+@keyframes visualizer1 {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+}
+
+@keyframes visualizer2 {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.3); }
+}
+
+@keyframes visualizer3 {
+    0%, 100% { transform: scaleY(0.6); }
+    50% { transform: scaleY(0.8); }
+}
+
+.music-player:not(.playing) .visualizer-bar {
+    animation: none;
+    transform: scaleY(0.3);
+}
+
+.song-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.song-title {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.song-artist {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.music-toggle-btn {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.music-toggle-btn i {
+    font-size: 1.25rem;
+}
+
+.music-minimize-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    flex-shrink: 0;
+    z-index: 1001;
+}
+
+.music-minimize-btn i {
+    color: #000;
+    font-size: 0.75rem;
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.music-player.minimized .music-minimize-btn i {
+    transform: rotate(0deg);
+}
+
+.music-minimize-btn:hover {
+    transform: scale(1.1);
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.control-btn:hover {
+    opacity: 1;
+}
+
+/* Minimized State */
+.music-player.minimized {
+    max-width: 300px;
+}
+
+.music-player.minimized .player-content {
+    gap: 0.5rem;
+}
+
+.music-player.minimized .album-art,
+.music-player.minimized .song-artist,
+.music-player.minimized #prev,
+.music-player.minimized #next {
+    display: none;
+}
+
+.music-player.minimized .song-title {
+    font-size: 0.9rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+    .music-player {
+        bottom: 1rem;
+        left: 1rem;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .player-content {
+        gap: 1rem;
+    }
+    
+    .player-controls {
+        gap: 1rem;
+    }
+    
+    .audio-visualizer {
+        display: none;
+    }
+}
+
+/* Floating Skills Section */
+.skills-section {
+    padding: 8rem 0;
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-track {
+    display: flex;
+    gap: 4rem;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.skills-track-left {
+    animation: slideLeft 20s linear infinite;
+}
+
+.skills-track-right {
+    animation: slideRight 20s linear infinite;
+}
+
+.skill-logo {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.skill-logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.skill-logo:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .glitch-text {
+        font-size: 3rem;
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .music-player {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .music-player.minimized {
+        width: 60px;
+        border-radius: 8px;
+        bottom: 1rem;
+        left: 1rem;
+    }
+}
+
+/* Add these animation keyframes at the end of your CSS file */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(44px, 450px, 56px, 0);
+    }
+    100% {
+        clip: rect(0px, 450px, 56px, 0);
+    }
+}
+
+/* Add smooth transitions to all interactive elements */
+.nav-links a,
+.cta-button,
+.social-link,
+.controls i {
+    transition: all 0.3s ease;
+}
+
+/* Add hover effect to buttons */
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(228, 61, 61, 0.3);
+}
+
+.role-wrapper {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.role-text {
+    position: relative;
+    color: var(--text-color);
+    transform: translateY(20px);
+    animation: roleAppear 0.5s ease-out forwards;
+}
+
+@keyframes roleAppear {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.5rem;
+    margin-left: 2px;
+    background-color: var(--text-color);
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0; }
+}
