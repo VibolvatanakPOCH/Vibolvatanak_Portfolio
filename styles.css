@@ -2,10 +2,10 @@
 :root {
     --primary-color: #E43D3D;
     --secondary-color: #1A1A1A;
-    --accent-color: #FF4D4D;
-    --text-color: #FFFFFF;
-    --bg-color: #000000;
-    --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --accent-color: #00f7ff;
+    --text-color: #ffffff;
+    --bg-color: #0a0a0a;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -107,7 +107,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     overflow: hidden;
 }
 
@@ -117,7 +117,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
@@ -125,33 +125,12 @@ body {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #ffffff;
     padding: 2rem;
-}
-
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-    filter: brightness(0.5) contrast(1.2);
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-color);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
 }
 
 .gradient-reveal {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -186,6 +165,48 @@ body {
                gradient 4s linear 1.2s infinite;
 }
 
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.role-wrapper {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.role-text {
+    position: relative;
+    color: var(--text-color);
+    transform: translateY(20px);
+    animation: roleAppear 0.5s ease-out forwards;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.5rem;
+    margin-left: 4px;
+    background-color: var(--text-color);
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -206,47 +227,20 @@ body {
     }
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    opacity: 0.8;
-    margin-bottom: 3rem;
+@keyframes roleAppear {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.cta-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.cta-button {
-    padding: 1rem 3rem;
-    border: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-decoration: none;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    font-size: 0.9rem;
-}
-
-.cta-button.primary {
-    background: var(--primary-color);
-    color: var(--text-color);
-}
-
-.cta-button.secondary {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(228, 61, 61, 0.2);
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 /* About Section */
@@ -744,64 +738,4 @@ body {
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(228, 61, 61, 0.3);
-}
-
-.role-wrapper {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-color);
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
-}
-
-.role-text {
-    position: relative;
-    color: var(--text-color);
-    transform: translateY(20px);
-    animation: roleAppear 0.5s ease-out forwards;
-}
-
-@keyframes roleAppear {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1.5rem;
-    margin-left: 2px;
-    background-color: var(--text-color);
-    animation: blink 0.8s infinite;
-    vertical-align: middle;
-    opacity: 0.8;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 0; }
 }
