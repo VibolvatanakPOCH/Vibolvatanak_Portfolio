@@ -58,18 +58,43 @@ const musicPlayer = {
 
     updateTheme() {
         const player = document.querySelector('.music-player');
-        const currentTheme = this.songs[this.currentSong].theme;
+        
+        // Get background color behind the player
+        const bgColor = this.getBackgroundColor(player);
         
         // Remove all theme classes
         player.classList.remove('theme-default', 'theme-dark', 'theme-light', 'theme-dynamic');
         
-        // Add new theme class
-        player.classList.add(`theme-${currentTheme}`);
+        // Determine theme based on background brightness
+        const brightness = (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000;
         
-        // If it's dynamic theme, calculate background color from album art
-        if (currentTheme === 'dynamic') {
-            this.calculateDynamicTheme();
+        if (brightness > 200) { // Very bright background
+            player.classList.add('theme-dark');
+        } else if (brightness > 128) { // Medium bright background
+            player.classList.add('theme-default');
+        } else { // Dark background
+            player.classList.add('theme-light');
         }
+    },
+    
+    getBackgroundColor(element) {
+        // Create a temporary element to get the computed background color
+        const temp = document.createElement('div');
+        temp.style.height = '1px';
+        temp.style.width = '1px';
+        temp.style.position = 'absolute';
+        temp.style.left = element.offsetLeft + 'px';
+        temp.style.top = element.offsetTop + 'px';
+        temp.style.zIndex = '-1';
+        document.body.appendChild(temp);
+        
+        // Get the computed background color
+        const bgColor = window.getComputedStyle(temp).backgroundColor;
+        document.body.removeChild(temp);
+        
+        // Parse RGB values
+        const rgb = bgColor.match(/\d+/g).map(Number);
+        return { r: rgb[0], g: rgb[1], b: rgb[2] };
     },
     
     calculateDynamicTheme() {
@@ -159,6 +184,11 @@ const musicPlayer = {
 
         // Adjust player width based on content
         this.adjustPlayerWidth();
+        
+        // Listen for scroll events to update theme
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => this.updateTheme());
+        });
     },
 
     adjustPlayerWidth() {

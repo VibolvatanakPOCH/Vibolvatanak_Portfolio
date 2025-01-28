@@ -434,6 +434,7 @@ body {
 }
 
 .music-player.theme-light .song-title,
+.music-player.theme-light .song-artist,
 .music-player.theme-light .control-btn,
 .music-player.theme-light .music-toggle-btn {
     color: #1a1a1a;
