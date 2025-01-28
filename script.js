@@ -330,6 +330,71 @@ const musicPlayer = {
     }
 };
 
+// UI Switcher
+function toggleUI() {
+    const body = document.body;
+    const professionalNavbar = document.querySelector('.navbar');
+    const teleportNavbar = document.querySelector('.navbar-alt');
+    
+    if (body.classList.contains('professional-ui')) {
+        // Switch to Teleport UI
+        body.classList.remove('professional-ui');
+        body.classList.add('teleport-ui');
+        professionalNavbar.classList.add('hidden');
+        teleportNavbar.classList.remove('hidden');
+        
+        // Update page theme
+        body.style.background = 'linear-gradient(45deg, #000000, #1a1a1a)';
+        
+        // Store UI preference
+        localStorage.setItem('uiPreference', 'teleport');
+    } else {
+        // Switch to Professional UI
+        body.classList.remove('teleport-ui');
+        body.classList.add('professional-ui');
+        teleportNavbar.classList.add('hidden');
+        professionalNavbar.classList.remove('hidden');
+        
+        // Restore original theme
+        body.style.background = '';
+        
+        // Store UI preference
+        localStorage.setItem('uiPreference', 'professional');
+    }
+}
+
+// Load saved UI preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedUI = localStorage.getItem('uiPreference');
+    if (savedUI === 'teleport') {
+        toggleUI();
+    }
+    
+    // Initialize music player
+    musicPlayer.init();
+    
+    // Start role typing animation
+    typeRole();
+
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: false,
+        mirror: true
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+});
+
 // Role typing animation
 const roles = ['DEVELOPER', 'DESIGNER', 'INNOVATOR'];
 let currentRoleIndex = 0;
@@ -370,33 +435,6 @@ function typeRole() {
     
     setTimeout(typeRole, typingSpeed);
 }
-
-// Start animations when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize music player
-    musicPlayer.init();
-    
-    // Start role typing animation
-    typeRole();
-
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: false,
-        mirror: true
-    });
-
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-});
 
 // Glitch Text Effect
 const glitchText = document.querySelector('.glitch-text');

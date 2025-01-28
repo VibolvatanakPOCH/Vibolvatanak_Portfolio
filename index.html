@@ -12,8 +12,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="professional-ui">
 <a href="#" class="corner-logo"><img src="assets/media/album-art/white@2x.png" alt="Corner Logo"></a>
+    
+    <!-- Professional Navbar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+        <button class="teleport-btn" onclick="toggleUI()">TELEPORT</button>
+    </nav>
+
+    <!-- Teleport Navbar (Hidden by default) -->
+    <nav class="navbar-alt hidden">
+        <div class="nav-brand">
+            <img src="assets/media/album-art/white@2x.png" alt="Logo">
+            <span>VIBOLVATANAK</span>
+        </div>
+        <div class="nav-links-alt">
+            <a href="#home">HOME</a>
+            <a href="#about">ABOUT</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+        <button class="professional-btn" onclick="toggleUI()">PROFESSIONAL</button>
+    </nav>
+
     <div class="music-player">
         <div class="music-player-header">
             <div class="player-content">
@@ -46,16 +73,6 @@
             </button>
         </div>
     </div>
-
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#contact">CONTACT</a>
-        </div>
-        <a href="#" class="teleport-btn">TELEPORT</a>
-    </nav>
 
     <main>
         <section id="home" class="hero">
