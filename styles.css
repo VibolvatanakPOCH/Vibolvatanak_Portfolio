@@ -445,6 +445,22 @@ body {
     color: #1a1a1a;
 }
 
+/* Blur glass theme - For image backgrounds */
+.music-player.theme-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.music-player.theme-glass .song-title,
+.music-player.theme-glass .song-artist,
+.music-player.theme-glass .control-btn,
+.music-player.theme-glass .music-toggle-btn,
+.music-player.theme-glass .music-minimize-btn {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 .music-player-header {
     position: relative;
     display: flex;
@@ -747,7 +763,9 @@ body {
 }
 
 #test-image {
-    background: #333;
+    background-image: url('assets/media/Artboard 1.png');
+    background-size: cover;
+    background-position: center;
     color: #fff;
 }
 

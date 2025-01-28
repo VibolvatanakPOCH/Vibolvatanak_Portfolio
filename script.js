@@ -63,24 +63,43 @@ const musicPlayer = {
         const bgColor = this.getBackgroundColor(player);
         
         // Remove all theme classes
-        player.classList.remove('theme-default', 'theme-dark', 'theme-light');
+        player.classList.remove('theme-default', 'theme-dark', 'theme-light', 'theme-glass');
         
-        // Determine theme based on background brightness
-        const brightness = (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000;
+        // Get the element behind the player
+        const rect = player.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const elements = document.elementsFromPoint(x, y);
         
-        // Update theme class and album art
-        if (brightness > 128) { // Light background
-            player.classList.add('theme-dark');
+        // Check if we're over an image background
+        const isOverImage = elements.some(el => {
+            const style = window.getComputedStyle(el);
+            return style.backgroundImage && style.backgroundImage !== 'none';
+        });
+        
+        if (isOverImage) {
+            // Use glass theme for image backgrounds
+            player.classList.add('theme-glass');
             document.querySelector('.album-art').src = 'assets/media/album-art/white@2x.png';
-        } else { // Dark background
-            player.classList.add('theme-light');
-            document.querySelector('.album-art').src = 'assets/media/album-art/black@2x.png';
+        } else {
+            // Determine theme based on background brightness
+            const brightness = (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000;
+            
+            if (brightness > 128) { // Light background
+                player.classList.add('theme-dark');
+                document.querySelector('.album-art').src = 'assets/media/album-art/white@2x.png';
+            } else { // Dark background
+                player.classList.add('theme-light');
+                document.querySelector('.album-art').src = 'assets/media/album-art/black@2x.png';
+            }
         }
         
         console.log('Theme updated:', {
-            brightness,
+            brightness: (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000,
             bgColor,
-            theme: brightness > 128 ? 'dark' : 'light'
+            isOverImage,
+            theme: player.classList.contains('theme-glass') ? 'glass' : 
+                   player.classList.contains('theme-dark') ? 'dark' : 'light'
         });
     },
     
