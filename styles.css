@@ -653,7 +653,7 @@ body {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    transition: opacity 0.1s ease, visibility 0s linear 0.1s;
 }
 
 .music-player.minimized .song-title {
