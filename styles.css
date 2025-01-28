@@ -37,9 +37,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 2rem;
+    height: 80px;
+    padding: 0 2rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     z-index: 1000;
     background: transparent;
@@ -53,7 +54,7 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
 }
 
@@ -72,11 +73,11 @@ body {
 
 .corner-logo {
     position: fixed;
-    top: 1rem;
+    top: 16px;
     left: 2rem;
     z-index: 9999;
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     transition: transform 0.3s ease;
     display: block;
 }
