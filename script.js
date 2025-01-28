@@ -86,14 +86,22 @@ const musicPlayer = {
     },
     
     getBackgroundColor(element) {
-        // Create a temporary element to get the computed background color
+        // Get the element's position
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Create a temporary element at that position
         const temp = document.createElement('div');
-        temp.style.height = '1px';
-        temp.style.width = '1px';
-        temp.style.position = 'absolute';
-        temp.style.left = element.offsetLeft + 'px';
-        temp.style.top = element.offsetTop + 'px';
-        temp.style.zIndex = '-1';
+        temp.style.cssText = `
+            position: fixed;
+            left: ${centerX}px;
+            top: ${centerY}px;
+            width: 1px;
+            height: 1px;
+            pointer-events: none;
+            z-index: -1;
+        `;
         document.body.appendChild(temp);
         
         // Get the computed background color
@@ -101,8 +109,14 @@ const musicPlayer = {
         document.body.removeChild(temp);
         
         // Parse RGB values
-        const rgb = bgColor.match(/\d+/g).map(Number);
-        return { r: rgb[0], g: rgb[1], b: rgb[2] };
+        const rgb = bgColor.match(/\d+/g);
+        if (!rgb) return { r: 0, g: 0, b: 0 }; // Default to black if no color found
+        
+        return {
+            r: parseInt(rgb[0]),
+            g: parseInt(rgb[1]),
+            b: parseInt(rgb[2])
+        };
     },
     
     calculateDynamicTheme() {

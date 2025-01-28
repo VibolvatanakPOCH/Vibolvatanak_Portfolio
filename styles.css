@@ -133,12 +133,12 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+    z-index: 0;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     text-align: center;
     padding: 2rem;
     max-width: 800px;
@@ -436,7 +436,8 @@ body {
 .music-player.theme-light .song-title,
 .music-player.theme-light .song-artist,
 .music-player.theme-light .control-btn,
-.music-player.theme-light .music-toggle-btn {
+.music-player.theme-light .music-toggle-btn,
+.music-player.theme-light .music-minimize-btn {
     color: #1a1a1a;
 }
 
@@ -731,6 +732,39 @@ body {
     }
 }
 
+/* Test sections for theme switching */
+.test-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    transition: background-color 0.6s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#test-dark {
+    background-color: #111;
+}
+
+#test-light {
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+#test-gradient {
+    background: linear-gradient(45deg, #4a90e2, #7f53ac);
+}
+
+#test-image {
+    background-image: url('assets/media/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 /* Floating Skills Section */
 .skills-section {
     padding: 8rem 0;
@@ -792,36 +826,6 @@ body {
     to {
         transform: translateX(0);
     }
-}
-
-/* Test sections for theme switching */
-.test-section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: #fff;
-    transition: background-color 0.6s ease;
-}
-
-#test-dark {
-    background-color: #111;
-}
-
-#test-light {
-    background-color: #f5f5f5;
-    color: #111;
-}
-
-#test-gradient {
-    background: linear-gradient(45deg, #4a90e2, #7f53ac);
-}
-
-#test-image {
-    background-image: url('assets/media/bg.jpg');
-    background-size: cover;
-    background-position: center;
 }
 
 /* Add these animation keyframes at the end of your CSS file */
