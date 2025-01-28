@@ -424,6 +424,7 @@ body {
     align-items: center;
     gap: 2rem;
     white-space: nowrap;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .song-info {
@@ -505,6 +506,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .music-toggle-btn {
@@ -516,7 +518,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--text-color);
     padding: 0;
     flex-shrink: 0;
@@ -568,7 +570,7 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0;
     display: flex;
     align-items: center;
