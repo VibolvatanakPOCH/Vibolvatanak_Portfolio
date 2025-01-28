@@ -9,23 +9,35 @@ AOS.init({
 // Music Player
 const musicPlayer = {
     songs: [
-        { 
-            title: "BADDERS",
-            artist: "PEEKABOO, FLOWDAN",
-            url: "assets/media/Skrillex, PEEKABOO, Flowdan, & G-Rex - Badders (Official Audio).mp3",
-            art: "assets/media/badders.jpg"
-        },
         {
-            title: "BANGARANG",
-            artist: "SIRAH",
+            title: "Bangarang",
+            artist: "Skrillex ft. Sirah",
             url: "assets/media/SKRILLEX - Bangarang feat. Sirah [Official Music Video].mp3",
             art: "assets/media/bangarang.jpg"
         },
         {
-            title: "SCARY MONSTERS AND NICE SPRITES",
-            artist: "SKRILLEX",
+            title: "Scary Monsters And Nice Sprites",
+            artist: "Skrillex",
             url: "assets/media/Skrillex - Scary Monsters And Nice Sprites (Official Audio).mp3",
             art: "assets/media/scary-monsters.jpg"
+        },
+        {
+            title: "Badders",
+            artist: "Skrillex, PEEKABOO, Flowdan & G-Rex",
+            url: "assets/media/Skrillex, PEEKABOO, Flowdan, & G-Rex - Badders (Official Audio).mp3",
+            art: "assets/media/badders.jpg"
+        },
+        {
+            title: "Big Dawgs",
+            artist: "Hanumankind ft. Kalmi",
+            url: "assets/media/Hanumankind  Big Dawgs  Ft. Kalmi (Official Music Video)  Def Jam India.mp3",
+            art: "assets/media/default-art.jpg"
+        },
+        {
+            title: "lalala",
+            artist: "bbno$ & y2k",
+            url: "assets/media/bbno$, y2k - lalala (Lyrics)  did I really just forget that melody_.mp3",
+            art: "assets/media/default-art.jpg"
         }
     ],
     currentSong: 0,
