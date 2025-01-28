@@ -75,6 +75,14 @@ const musicPlayer = {
         } else { // Dark background
             player.classList.add('theme-light');
         }
+
+        // Update album art based on theme
+        const albumArt = document.querySelector('.album-art');
+        if (player.classList.contains('theme-light')) {
+            albumArt.src = 'assets/media/album-art/black@2x.png';
+        } else {
+            albumArt.src = 'assets/media/album-art/white@2x.png';
+        }
     },
     
     getBackgroundColor(element) {
@@ -146,12 +154,11 @@ const musicPlayer = {
     updateSongInfo() {
         const songTitle = document.querySelector('.song-title');
         const songArtist = document.querySelector('.song-artist');
-        const albumArt = document.querySelector('.album-art');
         
         songTitle.textContent = this.songs[this.currentSong].title;
         songArtist.textContent = this.songs[this.currentSong].artist;
-        albumArt.src = this.songs[this.currentSong].art;
         
+        // Theme will update the album art
         this.updateTheme();
     },
 
