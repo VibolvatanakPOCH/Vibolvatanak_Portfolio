@@ -376,12 +376,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize music player
     musicPlayer.init();
     
-    // Start typing animation after name reveal (1.5s for both parts of name)
-    setTimeout(() => {
-        const roleWrapper = document.querySelector('.role-wrapper');
-        roleWrapper.style.opacity = '1';
-        typeRole();
-    }, 1500);
+    // Start role typing animation
+    typeRole();
+
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: false,
+        mirror: true
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 });
 
 // Glitch Text Effect
