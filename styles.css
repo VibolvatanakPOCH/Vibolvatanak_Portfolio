@@ -129,6 +129,14 @@ body {
     max-width: 800px;
 }
 
+.hero-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
 .gradient-reveal {
     font-size: 3.5rem;
     font-weight: 800;
