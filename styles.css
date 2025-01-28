@@ -794,6 +794,36 @@ body {
     }
 }
 
+/* Test sections for theme switching */
+.test-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #fff;
+    transition: background-color 0.6s ease;
+}
+
+#test-dark {
+    background-color: #111;
+}
+
+#test-light {
+    background-color: #f5f5f5;
+    color: #111;
+}
+
+#test-gradient {
+    background: linear-gradient(45deg, #4a90e2, #7f53ac);
+}
+
+#test-image {
+    background-image: url('assets/media/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 /* Add these animation keyframes at the end of your CSS file */
 @keyframes fadeIn {
     from {
