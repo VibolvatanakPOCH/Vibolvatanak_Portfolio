@@ -542,6 +542,10 @@ body {
     margin: 0;
     font-weight: 700;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 200px;
 }
 
 .song-artist {
@@ -653,10 +657,9 @@ body {
 }
 
 .music-player.minimized .song-title {
-    font-size: 0.9rem;
     max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Control buttons visibility and transition */
