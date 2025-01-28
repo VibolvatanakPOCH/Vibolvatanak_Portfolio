@@ -409,25 +409,29 @@ body {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
-    backdrop-filter: blur(10px);
     border-radius: 12px;
     z-index: 1000;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     width: fit-content;
     max-width: 90vw;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.music-player.theme-default {
-    background: rgba(26, 26, 26, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
+/* Dark theme - For light backgrounds */
 .music-player.theme-dark {
     background: rgba(26, 26, 26, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.music-player.theme-dark .song-title,
+.music-player.theme-dark .song-artist,
+.music-player.theme-dark .control-btn,
+.music-player.theme-dark .music-toggle-btn,
+.music-player.theme-dark .music-minimize-btn {
+    color: #ffffff;
+}
+
+/* Light theme - For dark backgrounds */
 .music-player.theme-light {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -439,23 +443,6 @@ body {
 .music-player.theme-light .music-toggle-btn,
 .music-player.theme-light .music-minimize-btn {
     color: #1a1a1a;
-}
-
-.music-player.theme-light .song-artist {
-    color: rgba(0, 0, 0, 0.6);
-}
-
-.music-player.theme-dynamic {
-    background: var(--dynamic-bg, rgba(26, 26, 26, 0.75));
-    border: 1px solid var(--dynamic-border, rgba(255, 255, 255, 0.1));
-}
-
-.music-player.theme-dynamic .song-title {
-    color: var(--dynamic-text, var(--text-color));
-}
-
-.music-player.theme-dynamic .song-artist {
-    color: var(--dynamic-subtext, rgba(255, 255, 255, 0.6));
 }
 
 .music-player-header {
@@ -740,14 +727,13 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: #fff;
-    transition: background-color 0.6s ease;
     position: relative;
     z-index: 1;
 }
 
 #test-dark {
     background-color: #111;
+    color: #fff;
 }
 
 #test-light {
@@ -757,12 +743,12 @@ body {
 
 #test-gradient {
     background: linear-gradient(45deg, #4a90e2, #7f53ac);
+    color: #fff;
 }
 
 #test-image {
-    background-image: url('assets/media/bg.jpg');
-    background-size: cover;
-    background-position: center;
+    background: #333;
+    color: #fff;
 }
 
 /* Floating Skills Section */

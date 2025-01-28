@@ -63,60 +63,55 @@ const musicPlayer = {
         const bgColor = this.getBackgroundColor(player);
         
         // Remove all theme classes
-        player.classList.remove('theme-default', 'theme-dark', 'theme-light', 'theme-dynamic');
+        player.classList.remove('theme-default', 'theme-dark', 'theme-light');
         
         // Determine theme based on background brightness
         const brightness = (bgColor.r * 299 + bgColor.g * 587 + bgColor.b * 114) / 1000;
         
-        if (brightness > 200) { // Very bright background
+        // Update theme class and album art
+        if (brightness > 128) { // Light background
             player.classList.add('theme-dark');
-        } else if (brightness > 128) { // Medium bright background
-            player.classList.add('theme-default');
+            document.querySelector('.album-art').src = 'assets/media/album-art/white@2x.png';
         } else { // Dark background
             player.classList.add('theme-light');
+            document.querySelector('.album-art').src = 'assets/media/album-art/black@2x.png';
         }
-
-        // Update album art based on theme
-        const albumArt = document.querySelector('.album-art');
-        if (player.classList.contains('theme-light')) {
-            albumArt.src = 'assets/media/album-art/black@2x.png';
-        } else {
-            albumArt.src = 'assets/media/album-art/white@2x.png';
-        }
+        
+        console.log('Theme updated:', {
+            brightness,
+            bgColor,
+            theme: brightness > 128 ? 'dark' : 'light'
+        });
     },
     
     getBackgroundColor(element) {
-        // Get the element's position
+        // Get all elements at the player's position
         const rect = element.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
         
-        // Create a temporary element at that position
-        const temp = document.createElement('div');
-        temp.style.cssText = `
-            position: fixed;
-            left: ${centerX}px;
-            top: ${centerY}px;
-            width: 1px;
-            height: 1px;
-            pointer-events: none;
-            z-index: -1;
-        `;
-        document.body.appendChild(temp);
+        // Get all elements at this point
+        const elements = document.elementsFromPoint(x, y);
         
-        // Get the computed background color
-        const bgColor = window.getComputedStyle(temp).backgroundColor;
-        document.body.removeChild(temp);
+        // Find the first element with a background color
+        for (const el of elements) {
+            if (el === element) continue; // Skip the player itself
+            
+            const bgColor = window.getComputedStyle(el).backgroundColor;
+            if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+                const rgb = bgColor.match(/\d+/g);
+                if (rgb) {
+                    return {
+                        r: parseInt(rgb[0]),
+                        g: parseInt(rgb[1]),
+                        b: parseInt(rgb[2])
+                    };
+                }
+            }
+        }
         
-        // Parse RGB values
-        const rgb = bgColor.match(/\d+/g);
-        if (!rgb) return { r: 0, g: 0, b: 0 }; // Default to black if no color found
-        
-        return {
-            r: parseInt(rgb[0]),
-            g: parseInt(rgb[1]),
-            b: parseInt(rgb[2])
-        };
+        // Default to black if no background color found
+        return { r: 0, g: 0, b: 0 };
     },
     
     calculateDynamicTheme() {
@@ -180,10 +175,9 @@ const musicPlayer = {
         // Create audio element
         this.audio = new Audio();
         this.audio.src = this.songs[this.currentSong].url;
-        
+        this.audio.volume = 0.5;
+
         // Set initial volume
-        this.audio.volume = 0.7;
-        
         this.updateSongInfo();
         this.setupEventListeners();
 
