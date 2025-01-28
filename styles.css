@@ -93,6 +93,52 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
+.teleport-btn {
+    position: fixed;
+    top: 16px;
+    right: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(
+        45deg,
+        #ff0f7b,
+        #f89b29,
+        #4f46e5,
+        #00f7ff
+    );
+    background-size: 300% 300%;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    animation: gradient 8s ease infinite;
+    border: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+.teleport-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background-size: 400% 400%;
+    animation: gradient 4s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 /* Hero Section */
 .hero {
     position: relative;
