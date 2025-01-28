@@ -409,7 +409,6 @@ body {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
-    background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     z-index: 1000;
@@ -417,7 +416,44 @@ body {
     width: fit-content;
     max-width: 90vw;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.music-player.theme-default {
+    background: rgba(26, 26, 26, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-player.theme-dark {
+    background: rgba(26, 26, 26, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-player.theme-light {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.music-player.theme-light .song-title,
+.music-player.theme-light .control-btn,
+.music-player.theme-light .music-toggle-btn {
+    color: #1a1a1a;
+}
+
+.music-player.theme-light .song-artist {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.music-player.theme-dynamic {
+    background: var(--dynamic-bg, rgba(26, 26, 26, 0.75));
+    border: 1px solid var(--dynamic-border, rgba(255, 255, 255, 0.1));
+}
+
+.music-player.theme-dynamic .song-title {
+    color: var(--dynamic-text, var(--text-color));
+}
+
+.music-player.theme-dynamic .song-artist {
+    color: var(--dynamic-subtext, rgba(255, 255, 255, 0.6));
 }
 
 .music-player-header {

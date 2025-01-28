@@ -13,42 +13,122 @@ const musicPlayer = {
             title: "Bangarang",
             artist: "Skrillex ft. Sirah",
             url: "assets/media/SKRILLEX - Bangarang feat. Sirah [Official Music Video].mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/bangarang.jpg",
+            theme: "dark"
         },
         {
             title: "Scary Monsters And Nice Sprites",
             artist: "Skrillex",
             url: "assets/media/Skrillex - Scary Monsters And Nice Sprites (Official Audio).mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/scary-monsters.jpg",
+            theme: "light"
         },
         {
             title: "Badders",
             artist: "Skrillex, PEEKABOO, Flowdan & G-Rex",
             url: "assets/media/Skrillex, PEEKABOO, Flowdan, & G-Rex - Badders (Official Audio).mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/badders.jpg",
+            theme: "dynamic"
         },
         {
             title: "Big Dawgs",
             artist: "Hanumankind ft. Kalmi",
             url: "assets/media/Hanumankind  Big Dawgs  Ft. Kalmi (Official Music Video)  Def Jam India.mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/big-dawgs.jpg",
+            theme: "dark"
         },
         {
             title: "lalala",
             artist: "bbno$ & y2k",
             url: "assets/media/bbno$, y2k - lalala (Lyrics)  did I really just forget that melody_.mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/lalala.jpg",
+            theme: "light"
         },
         {
             title: "Chess Type Beat",
             artist: "Dancing Rat",
             url: "assets/media/𝐂𝐡𝐞𝐬𝐬 𝐓𝐲𝐩𝐞 𝐁𝐞𝐚𝐭 (𝐒𝐥𝐨𝐰𝐞𝐝𝐓𝐢𝐤𝐭𝐨𝐤 𝐕𝐞𝐫𝐬𝐢𝐨𝐧) 𝐱 𝐃𝐚𝐧𝐜𝐢𝐧𝐠 𝐑𝐚𝐭 - 𝐉𝐞𝐬𝐮𝐬 𝐌𝐮𝐬𝐜.mp3",
-            art: "assets/media/album-art/white@2x.png"
+            art: "assets/media/album-art/chess-type-beat.jpg",
+            theme: "default"
         }
     ],
     currentSong: 0,
     audio: null,
     isPlaying: false,
+
+    updateTheme() {
+        const player = document.querySelector('.music-player');
+        const currentTheme = this.songs[this.currentSong].theme;
+        
+        // Remove all theme classes
+        player.classList.remove('theme-default', 'theme-dark', 'theme-light', 'theme-dynamic');
+        
+        // Add new theme class
+        player.classList.add(`theme-${currentTheme}`);
+        
+        // If it's dynamic theme, calculate background color from album art
+        if (currentTheme === 'dynamic') {
+            this.calculateDynamicTheme();
+        }
+    },
+    
+    calculateDynamicTheme() {
+        const img = document.querySelector('.album-art');
+        if (!img.complete) {
+            img.addEventListener('load', () => this.extractColorFromImage(img));
+        } else {
+            this.extractColorFromImage(img);
+        }
+    },
+    
+    extractColorFromImage(img) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        let r = 0, g = 0, b = 0;
+        
+        // Calculate average color
+        for (let i = 0; i < imageData.length; i += 4) {
+            r += imageData[i];
+            g += imageData[i + 1];
+            b += imageData[i + 2];
+        }
+        
+        const pixels = imageData.length / 4;
+        r = Math.round(r / pixels);
+        g = Math.round(g / pixels);
+        b = Math.round(b / pixels);
+        
+        const player = document.querySelector('.music-player');
+        player.style.setProperty('--dynamic-bg', `rgba(${r},${g},${b},0.75)`);
+        player.style.setProperty('--dynamic-border', `rgba(${r},${g},${b},0.3)`);
+        
+        // Set text color based on background brightness
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        if (brightness > 128) {
+            player.style.setProperty('--dynamic-text', '#1a1a1a');
+            player.style.setProperty('--dynamic-subtext', 'rgba(0,0,0,0.6)');
+        } else {
+            player.style.setProperty('--dynamic-text', '#ffffff');
+            player.style.setProperty('--dynamic-subtext', 'rgba(255,255,255,0.6)');
+        }
+    },
+
+    updateSongInfo() {
+        const songTitle = document.querySelector('.song-title');
+        const songArtist = document.querySelector('.song-artist');
+        const albumArt = document.querySelector('.album-art');
+        
+        songTitle.textContent = this.songs[this.currentSong].title;
+        songArtist.textContent = this.songs[this.currentSong].artist;
+        albumArt.src = this.songs[this.currentSong].art;
+        
+        this.updateTheme();
+    },
 
     init() {
         // Create audio element
@@ -78,21 +158,6 @@ const musicPlayer = {
         });
 
         // Adjust player width based on content
-        this.adjustPlayerWidth();
-    },
-
-    updateSongInfo() {
-        const currentSong = this.songs[this.currentSong];
-        document.querySelector('.song-title').textContent = currentSong.title;
-        document.querySelector('.song-artist').textContent = currentSong.artist;
-        
-        // Update album art if available
-        const albumArt = document.querySelector('.album-art');
-        if (albumArt) {
-            albumArt.src = currentSong.art || 'assets/media/default-art.jpg';
-            albumArt.alt = `${currentSong.title} Album Art`;
-        }
-        
         this.adjustPlayerWidth();
     },
 
