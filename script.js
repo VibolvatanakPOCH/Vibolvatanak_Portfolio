@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
     musicPlayer.init();
     
     // Initialize typing animation
-    const roles = ['Full Stack Developer', 'UI/UX Designer', 'Tech Enthusiast'];
+    const roles = ['DEVELOPER', 'DESIGNER', 'INNOVATOR'];
     let currentRoleIndex = 0;
     let currentCharIndex = 0;
     let isDeleting = false;
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adding characters
             roleText.textContent = currentRole.substring(0, currentCharIndex + 1);
             currentCharIndex++;
-            typingSpeed = 150; // Slower when typing
+            typingSpeed = 100; // Original typing speed
         }
         
         if (!isDeleting && currentCharIndex === currentRole.length) {

@@ -227,27 +227,34 @@ body {
 
 .role-wrapper {
     font-size: 1.5rem;
-    color: var(--text-color);
-    margin-top: 1rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.8s forwards;
+    font-weight: 700;
+    margin-top: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-color);
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
 }
 
 .role-text {
-    min-width: 1ch;
+    position: relative;
+    color: var(--text-color);
+    transform: translateY(20px);
+    animation: roleAppear 0.5s ease-out forwards;
 }
 
 .cursor {
     display: inline-block;
     width: 3px;
-    height: 1.2em;
+    height: 1.5rem;
+    margin-left: 4px;
     background-color: var(--text-color);
-    margin-left: 2px;
-    animation: blink 0.7s infinite;
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
 }
 
 @keyframes blink {
