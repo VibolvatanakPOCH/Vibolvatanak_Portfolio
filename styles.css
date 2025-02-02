@@ -171,27 +171,25 @@ body {
 }
 
 .gradient-reveal {
-    font-size: 3.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .reveal-text {
-    position: relative;
-    display: block;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     line-height: 1.2;
     color: var(--text-color);
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
-.gradient-text {
-    -webkit-background-clip: text;
-    background-clip: text;
+.name-text {
     background: linear-gradient(
         90deg,
         #ff3d00 0%,
@@ -199,8 +197,11 @@ body {
         #2979ff 100%
     );
     background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
-    animation: gradient 4s linear infinite;
+    animation: fadeIn 0.8s ease-out forwards,
+               gradient 4s linear 1.2s infinite;
 }
 
 @keyframes gradient {
@@ -209,6 +210,17 @@ body {
     }
     100% {
         background-position: 200% center;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -246,17 +258,6 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .hero-logo {
