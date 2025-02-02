@@ -367,11 +367,58 @@ function toggleUI() {
 document.addEventListener('DOMContentLoaded', () => {
     const savedUI = localStorage.getItem('uiPreference');
     if (savedUI === 'teleport') {
-        toggleUI();
+        document.body.classList.remove('professional-ui');
+        document.body.classList.add('teleport-ui');
+        document.querySelector('.navbar').classList.add('hidden');
+        document.querySelector('.navbar-alt').classList.remove('hidden');
     }
-    
+
     // Initialize music player
     musicPlayer.init();
+    
+    // Initialize typing animation
+    const roles = ['Full Stack Developer', 'UI/UX Designer', 'Tech Enthusiast'];
+    let currentRoleIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let pauseEnd = 2000;
+    let pauseStart = 1000;
+
+    function typeRole() {
+        const roleText = document.querySelector('.role-text');
+        const currentRole = roles[currentRoleIndex];
+        
+        if (!roleText) return;
+        
+        if (isDeleting) {
+            // Removing characters
+            roleText.textContent = currentRole.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+            typingSpeed = 50; // Faster when deleting
+        } else {
+            // Adding characters
+            roleText.textContent = currentRole.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+            typingSpeed = 150; // Slower when typing
+        }
+        
+        if (!isDeleting && currentCharIndex === currentRole.length) {
+            // Finished typing current role
+            isDeleting = true;
+            typingSpeed = pauseEnd; // Pause at the end
+        } else if (isDeleting && currentCharIndex === 0) {
+            // Finished deleting current role
+            isDeleting = false;
+            currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+            typingSpeed = pauseStart; // Pause before starting next word
+        }
+        
+        setTimeout(typeRole, typingSpeed);
+    }
+
+    // Start typing animation
+    setTimeout(typeRole, 1000);
     
     // Start role typing animation
     typeRole();
@@ -394,47 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-// Role typing animation
-const roles = ['DEVELOPER', 'DESIGNER', 'INNOVATOR'];
-let currentRoleIndex = 0;
-let currentCharIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
-let pauseEnd = 2000;
-let pauseStart = 1000;
-
-function typeRole() {
-    const roleText = document.querySelector('.role-text');
-    const currentRole = roles[currentRoleIndex];
-    
-    if (!roleText) return;
-    
-    if (isDeleting) {
-        // Removing characters
-        roleText.textContent = currentRole.substring(0, currentCharIndex - 1);
-        currentCharIndex--;
-        typingSpeed = 50; // Faster when deleting
-    } else {
-        // Adding characters
-        roleText.textContent = currentRole.substring(0, currentCharIndex + 1);
-        currentCharIndex++;
-        typingSpeed = 150; // Slower when typing
-    }
-    
-    if (!isDeleting && currentCharIndex === currentRole.length) {
-        // Finished typing current role
-        isDeleting = true;
-        typingSpeed = pauseEnd; // Pause at the end
-    } else if (isDeleting && currentCharIndex === 0) {
-        // Finished deleting current role
-        isDeleting = false;
-        currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-        typingSpeed = pauseStart; // Pause before starting next word
-    }
-    
-    setTimeout(typeRole, typingSpeed);
-}
 
 // Glitch Text Effect
 const glitchText = document.querySelector('.glitch-text');
