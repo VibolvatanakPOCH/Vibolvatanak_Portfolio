@@ -417,12 +417,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeRole, typingSpeed);
     }
 
-    // Start typing animation
-    setTimeout(typeRole, 1000);
-    
-    // Start role typing animation
+    // Start typing animation immediately
     typeRole();
-
+    
     // Initialize AOS
     AOS.init({
         duration: 800,

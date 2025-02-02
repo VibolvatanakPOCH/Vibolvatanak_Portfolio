@@ -165,10 +165,9 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     text-align: center;
     padding: 2rem;
-    max-width: 800px;
 }
 
 .hero-logo {
@@ -180,39 +179,19 @@ body {
 }
 
 .gradient-reveal {
-    font-size: 3.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
 }
 
-.reveal-text {
-    position: relative;
-    display: block;
-    line-height: 1.2;
-}
-
 .gradient-text {
-    background: linear-gradient(
-        90deg,
-        #ff3d00 0%,
-        #00e5ff 50%,
-        #2979ff 100%
-    );
-    background-size: 200% auto;
-    color: transparent;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
     -webkit-background-clip: text;
     background-clip: text;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.4s forwards,
-               gradient 4s linear 1.2s infinite;
+    color: transparent;
+    font-size: 3.5rem;
+    font-weight: 700;
+    display: block;
+    margin-top: 0.5rem;
 }
 
 .hero-content h1 {
@@ -236,15 +215,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-color);
-    opacity: 0;
-    transition: opacity 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out 0.8s forwards;
 }
 
 .role-text {
     position: relative;
     color: var(--text-color);
-    transform: translateY(20px);
-    animation: roleAppear 0.5s ease-out forwards;
+    min-width: 1ch;
 }
 
 .cursor {
@@ -263,39 +240,8 @@ body {
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% center;
-    }
-    100% {
-        background-position: 200% center;
-    }
-}
-
-@keyframes roleAppear {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* About Section */
@@ -869,14 +815,8 @@ body {
 
 /* Add these animation keyframes at the end of your CSS file */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes glitch-anim {
