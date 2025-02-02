@@ -170,38 +170,68 @@ body {
     padding: 2rem;
 }
 
+.gradient-reveal {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.reveal-text {
+    position: relative;
+    display: block;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+    background: linear-gradient(
+        90deg,
+        #ff3d00 0%,
+        #00e5ff 50%,
+        #2979ff 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.4s forwards,
+               gradient 4s linear 1.2s infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .hero-logo {
     width: 80px;
     height: 80px;
     margin-bottom: 2rem;
     opacity: 0;
     animation: fadeIn 0.8s ease-out forwards;
-}
-
-.gradient-reveal {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-.gradient-text {
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 3.5rem;
-    font-weight: 700;
-    display: block;
-    margin-top: 0.5rem;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-color);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .role-wrapper {
@@ -215,6 +245,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--text-color);
+    opacity: 0;
     animation: fadeIn 0.5s ease-out 0.8s forwards;
 }
 
@@ -237,11 +268,6 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 /* About Section */
