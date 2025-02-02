@@ -180,14 +180,13 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .reveal-text {
     position: relative;
     display: block;
     line-height: 1.2;
+    color: var(--text-color);
 }
 
 .gradient-text {
@@ -201,9 +200,7 @@ body {
     );
     background-size: 200% auto;
     color: transparent;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.4s forwards,
-               gradient 4s linear 1.2s infinite;
+    animation: gradient 4s linear infinite;
 }
 
 @keyframes gradient {
@@ -213,25 +210,6 @@ body {
     100% {
         background-position: 200% center;
     }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .role-wrapper {
@@ -268,6 +246,25 @@ body {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 /* About Section */
