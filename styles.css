@@ -642,6 +642,7 @@ body {
 /* Minimized State */
 .music-player.minimized {
     max-width: 300px;
+    z-index: 1000;
 }
 
 .music-player.minimized .player-content {
@@ -687,6 +688,33 @@ body {
     opacity: 1;
     visibility: visible;
     position: relative;
+}
+
+.music-player.minimized .volume-control {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    margin-left: 0;
+    z-index: 1001;
+    right: 0;
+    background: inherit;
+    padding: 8px;
+    border-radius: 8px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transform: translateY(-100%);
+    top: -10px;
+}
+
+.music-player.minimized:hover .volume-control {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    width: auto;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -1205,29 +1233,6 @@ body {
 #volume-slider::-moz-range-thumb:hover {
     background: var(--primary-color);
     transform: scale(1.2);
-}
-
-/* Update minimized state for volume control */
-.music-player.minimized .volume-control {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    width: 0;
-    margin-left: 0;
-}
-
-/* Add hover effect to show volume control in minimized state */
-.music-player.minimized:hover .volume-control {
-    opacity: 1;
-    visibility: visible;
-    position: relative;
-    width: auto;
-    margin-left: 16px;
-}
-
-/* Ensure proper spacing in minimized state */
-.music-player.minimized:hover .player-content {
-    gap: 1rem;
 }
 
 /* Fix backdrop-filter for Safari */
