@@ -52,6 +52,13 @@ const musicPlayer = {
             theme: "glass"
         },
         {
+            title: "Tip Toe",
+            artist: "HYBS",
+            url: "assets/media/HYBS - Tip Toe (Official Video).mp3",
+            art: "assets/media/album-art/tip-toe.jpg",
+            theme: "dark"
+        },
+        {
             title: "Round and Round",
             artist: "Mingle Game Song",
             url: "assets/media/Mingle Game Song Round and Round Lyric Video  Squid Game_ Season 2  Netflix.mp3",
