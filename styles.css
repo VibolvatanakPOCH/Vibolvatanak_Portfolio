@@ -1430,3 +1430,45 @@ body {
 .cta-button.secondary:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.section-header .section-title {
+    margin-bottom: 0;
+}
+
+.section-header #manageProjectsBtn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.section-header #manageProjectsBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(228, 61, 61, 0.3);
+}
+
+.section-header #manageProjectsBtn i {
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+}
