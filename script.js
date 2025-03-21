@@ -743,6 +743,12 @@ const ProjectManager = {
         if (manageProjectsBtn) {
             manageProjectsBtn.style.display = this.isAdmin ? 'flex' : 'none';
         }
+
+        // Initialize modal
+        const modal = document.getElementById('projectModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
     },
 
     authenticate() {
@@ -760,6 +766,22 @@ const ProjectManager = {
         return false;
     },
 
+    showModal() {
+        const modal = document.getElementById('projectModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            modal.classList.add('active');
+        }
+    },
+
+    hideModal() {
+        const modal = document.getElementById('projectModal');
+        if (modal) {
+            modal.style.display = 'none';
+            modal.classList.remove('active');
+        }
+    },
+
     initializeUI() {
         // Modal elements
         const modal = document.getElementById('projectModal');
@@ -770,42 +792,50 @@ const ProjectManager = {
         const cancelProjectBtn = document.getElementById('cancelProjectBtn');
 
         // Event listeners
-        manageProjectsBtn?.addEventListener('click', () => {
-            if (!this.isAdmin && !this.authenticate()) {
-                return;
-            }
-            modal.classList.add('active');
-            // Clear the projects list and render it again
-            const projectsList = document.getElementById('projectsList');
-            if (projectsList) {
-                projectsList.innerHTML = '';
-                this.renderProjects();
-            }
-        });
+        if (manageProjectsBtn) {
+            manageProjectsBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!this.isAdmin && !this.authenticate()) {
+                    return;
+                }
+                this.showModal();
+            });
+        }
 
-        closeModalBtn?.addEventListener('click', () => {
-            modal.classList.remove('active');
-            this.resetForm();
-        });
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', () => {
+                this.hideModal();
+                this.resetForm();
+            });
+        }
 
-        addProjectBtn?.addEventListener('click', () => {
-            projectForm.classList.remove('hidden');
-            addProjectBtn.classList.add('hidden');
-        });
+        if (addProjectBtn) {
+            addProjectBtn.addEventListener('click', () => {
+                if (projectForm) {
+                    projectForm.classList.remove('hidden');
+                    addProjectBtn.classList.add('hidden');
+                }
+            });
+        }
 
-        cancelProjectBtn?.addEventListener('click', () => {
-            this.resetForm();
-        });
+        if (cancelProjectBtn) {
+            cancelProjectBtn.addEventListener('click', () => {
+                this.resetForm();
+            });
+        }
 
-        projectForm?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.saveProject();
-        });
+        if (projectForm) {
+            projectForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.saveProject();
+                this.hideModal();
+            });
+        }
 
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.remove('active');
+                this.hideModal();
                 this.resetForm();
             }
         });

@@ -1266,12 +1266,25 @@ body {
     z-index: 9999;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal.active {
+    display: flex !important;
+}
+
+/* Ensure form is visible when active */
+.project-form.hidden {
+    display: none;
+}
+
+.project-form {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1.5rem;
 }
 
 .modal-content {
@@ -1317,13 +1330,6 @@ body {
 
 .modal-body {
     padding: 1.5rem;
-}
-
-.project-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.5rem;
 }
 
 .form-group {
