@@ -1143,16 +1143,27 @@ body {
     align-items: center;
     gap: 8px;
     margin-left: 16px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.volume-control i {
+#volume-icon {
+    background: none;
+    border: none;
     color: var(--text-color);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: var(--transition);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
 }
 
-.volume-control i:hover {
+#volume-icon:hover {
+    opacity: 1;
     color: var(--primary-color);
 }
 
@@ -1163,7 +1174,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     outline: none;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 #volume-slider::-webkit-slider-thumb {
@@ -1173,7 +1184,7 @@ body {
     background: var(--text-color);
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 #volume-slider::-webkit-slider-thumb:hover {
@@ -1188,10 +1199,49 @@ body {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
 }
 
 #volume-slider::-moz-range-thumb:hover {
     background: var(--primary-color);
     transform: scale(1.2);
+}
+
+/* Update minimized state for volume control */
+.music-player.minimized .volume-control {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    margin-left: 0;
+}
+
+/* Add hover effect to show volume control in minimized state */
+.music-player.minimized:hover .volume-control {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    width: auto;
+    margin-left: 16px;
+}
+
+/* Ensure proper spacing in minimized state */
+.music-player.minimized:hover .player-content {
+    gap: 1rem;
+}
+
+/* Fix backdrop-filter for Safari */
+.navbar.scrolled {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.music-player.theme-glass {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.navbar-alt {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
