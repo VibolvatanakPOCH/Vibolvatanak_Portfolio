@@ -717,3 +717,191 @@ document.querySelectorAll('section').forEach(section => {
     section.style.transition = 'all 0.6s ease-out';
     observer.observe(section);
 });
+
+// Project Management
+const ProjectManager = {
+    projects: [],
+
+    init() {
+        // Load projects from localStorage
+        this.loadProjects();
+        
+        // Initialize UI elements
+        this.initializeUI();
+        
+        // Render projects in both the management modal and the main page
+        this.renderProjects();
+        this.renderProjectsGrid();
+    },
+
+    initializeUI() {
+        // Modal elements
+        const modal = document.getElementById('projectModal');
+        const manageProjectsBtn = document.getElementById('manageProjectsBtn');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const addProjectBtn = document.getElementById('addProjectBtn');
+        const projectForm = document.getElementById('projectForm');
+        const cancelProjectBtn = document.getElementById('cancelProjectBtn');
+
+        // Event listeners
+        manageProjectsBtn?.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeModalBtn?.addEventListener('click', () => {
+            modal.classList.remove('active');
+            this.resetForm();
+        });
+
+        addProjectBtn?.addEventListener('click', () => {
+            projectForm.classList.remove('hidden');
+            addProjectBtn.classList.add('hidden');
+        });
+
+        cancelProjectBtn?.addEventListener('click', () => {
+            this.resetForm();
+        });
+
+        projectForm?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.saveProject();
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                this.resetForm();
+            }
+        });
+    },
+
+    loadProjects() {
+        const savedProjects = localStorage.getItem('projects');
+        this.projects = savedProjects ? JSON.parse(savedProjects) : [];
+    },
+
+    saveProjects() {
+        localStorage.setItem('projects', JSON.stringify(this.projects));
+    },
+
+    renderProjects() {
+        const projectsList = document.getElementById('projectsList');
+        if (!projectsList) return;
+
+        projectsList.innerHTML = this.projects.map((project, index) => `
+            <div class="project-item">
+                <span class="project-item-title">${project.title}</span>
+                <div class="project-item-actions">
+                    <button onclick="ProjectManager.editProject(${index})">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button onclick="ProjectManager.deleteProject(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    renderProjectsGrid() {
+        const projectGrid = document.querySelector('.project-grid');
+        if (!projectGrid) return;
+
+        projectGrid.innerHTML = this.projects.map(project => `
+            <div class="project-card" data-aos="fade-up">
+                <img src="${project.image}" alt="${project.title}" class="project-image">
+                <div class="project-overlay">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-technologies">
+                        ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                    <div class="project-links">
+                        ${project.liveLink ? `
+                            <a href="${project.liveLink}" class="cta-button primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        ` : ''}
+                        ${project.github ? `
+                            <a href="${project.github}" class="cta-button secondary" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    saveProject() {
+        const form = document.getElementById('projectForm');
+        const projectId = document.getElementById('projectId').value;
+        
+        const project = {
+            title: document.getElementById('projectTitle').value,
+            description: document.getElementById('projectDescription').value,
+            image: document.getElementById('projectImage').value,
+            liveLink: document.getElementById('projectLiveLink').value,
+            github: document.getElementById('projectGithub').value,
+            technologies: document.getElementById('projectTechnologies').value
+                .split(',')
+                .map(tech => tech.trim())
+                .filter(tech => tech)
+        };
+
+        if (projectId === '') {
+            // Add new project
+            this.projects.push(project);
+        } else {
+            // Update existing project
+            this.projects[parseInt(projectId)] = project;
+        }
+
+        this.saveProjects();
+        this.renderProjects();
+        this.renderProjectsGrid();
+        this.resetForm();
+    },
+
+    editProject(index) {
+        const project = this.projects[index];
+        const form = document.getElementById('projectForm');
+        const addProjectBtn = document.getElementById('addProjectBtn');
+
+        document.getElementById('projectId').value = index;
+        document.getElementById('projectTitle').value = project.title;
+        document.getElementById('projectDescription').value = project.description;
+        document.getElementById('projectImage').value = project.image;
+        document.getElementById('projectLiveLink').value = project.liveLink || '';
+        document.getElementById('projectGithub').value = project.github || '';
+        document.getElementById('projectTechnologies').value = project.technologies.join(', ');
+
+        form.classList.remove('hidden');
+        addProjectBtn.classList.add('hidden');
+    },
+
+    deleteProject(index) {
+        if (confirm('Are you sure you want to delete this project?')) {
+            this.projects.splice(index, 1);
+            this.saveProjects();
+            this.renderProjects();
+            this.renderProjectsGrid();
+        }
+    },
+
+    resetForm() {
+        const form = document.getElementById('projectForm');
+        const addProjectBtn = document.getElementById('addProjectBtn');
+
+        form.reset();
+        document.getElementById('projectId').value = '';
+        form.classList.add('hidden');
+        addProjectBtn.classList.remove('hidden');
+    }
+};
+
+// Initialize ProjectManager when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    ProjectManager.init();
+});

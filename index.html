@@ -289,5 +289,61 @@
     </main>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Project Management Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Manage Projects</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <button id="addProjectBtn" class="cta-button primary">Add New Project</button>
+                
+                <!-- Project Form -->
+                <form id="projectForm" class="project-form hidden">
+                    <input type="hidden" id="projectId">
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title</label>
+                        <input type="text" id="projectTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectImage">Image URL</label>
+                        <input type="text" id="projectImage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectLiveLink">Live Demo URL</label>
+                        <input type="text" id="projectLiveLink">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectGithub">GitHub URL</label>
+                        <input type="text" id="projectGithub">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectTechnologies">Technologies (comma-separated)</label>
+                        <input type="text" id="projectTechnologies" placeholder="React, Node.js, MongoDB">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="cta-button primary">Save Project</button>
+                        <button type="button" class="cta-button secondary" id="cancelProjectBtn">Cancel</button>
+                    </div>
+                </form>
+
+                <!-- Projects List -->
+                <div id="projectsList" class="projects-list">
+                    <!-- Projects will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this button in your projects section -->
+    <div class="project-actions">
+        <button id="manageProjectsBtn" class="cta-button primary">Manage Projects</button>
+    </div>
 </body>
 </html>
