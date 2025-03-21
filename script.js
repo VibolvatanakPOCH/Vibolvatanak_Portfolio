@@ -69,6 +69,7 @@ const musicPlayer = {
     currentSong: 0,
     audio: null,
     isPlaying: false,
+    lastVolume: null,
 
     updateTheme() {
         const player = document.querySelector('.music-player');
@@ -209,6 +210,29 @@ const musicPlayer = {
         this.audio = new Audio();
         this.audio.src = this.songs[this.currentSong].url;
         this.audio.volume = 0.5;
+        
+        // Initialize volume control
+        const volumeSlider = document.getElementById('volume-slider');
+        const volumeIcon = document.getElementById('volume-icon');
+        
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            this.audio.volume = volume;
+            this.updateVolumeIcon(volume);
+        });
+        
+        volumeIcon.addEventListener('click', () => {
+            if (this.audio.volume > 0) {
+                this.lastVolume = this.audio.volume;
+                this.audio.volume = 0;
+                volumeSlider.value = 0;
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else {
+                this.audio.volume = this.lastVolume || 0.5;
+                volumeSlider.value = (this.lastVolume || 0.5) * 100;
+                this.updateVolumeIcon(this.audio.volume);
+            }
+        });
 
         // Set initial volume
         this.updateSongInfo();
@@ -334,6 +358,17 @@ const musicPlayer = {
 
         // Handle window resize
         window.addEventListener('resize', () => this.adjustPlayerWidth());
+    },
+
+    updateVolumeIcon(volume) {
+        const volumeIcon = document.getElementById('volume-icon');
+        if (volume === 0) {
+            volumeIcon.className = 'fas fa-volume-mute';
+        } else if (volume < 0.5) {
+            volumeIcon.className = 'fas fa-volume-low';
+        } else {
+            volumeIcon.className = 'fas fa-volume-up';
+        }
     }
 };
 
