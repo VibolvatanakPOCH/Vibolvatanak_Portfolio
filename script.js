@@ -55,7 +55,7 @@ const musicPlayer = {
             title: "Tip Toe",
             artist: "HYBS",
             url: "assets/media/HYBS - Tip Toe (Official Video).mp3",
-            art: "assets/media/album-art/tip-toe.jpg",
+            art: "assets/media/album-art/white@2x.png",
             theme: "dark"
         },
         {
