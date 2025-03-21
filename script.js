@@ -721,8 +721,13 @@ document.querySelectorAll('section').forEach(section => {
 // Project Management
 const ProjectManager = {
     projects: [],
+    isAdmin: false,
 
     init() {
+        // Check if admin
+        const adminPassword = localStorage.getItem('adminPassword');
+        this.isAdmin = adminPassword === 'your_secure_password'; // You'll set this later
+
         // Load projects from localStorage
         this.loadProjects();
         
@@ -732,6 +737,27 @@ const ProjectManager = {
         // Render projects in both the management modal and the main page
         this.renderProjects();
         this.renderProjectsGrid();
+
+        // Show/Hide admin features
+        const manageProjectsBtn = document.getElementById('manageProjectsBtn');
+        if (manageProjectsBtn) {
+            manageProjectsBtn.style.display = this.isAdmin ? 'flex' : 'none';
+        }
+    },
+
+    authenticate() {
+        const password = prompt('Enter admin password:');
+        if (password === 'your_secure_password') { // You'll change this later
+            localStorage.setItem('adminPassword', password);
+            this.isAdmin = true;
+            const manageProjectsBtn = document.getElementById('manageProjectsBtn');
+            if (manageProjectsBtn) {
+                manageProjectsBtn.style.display = 'flex';
+            }
+            return true;
+        }
+        alert('Invalid password');
+        return false;
     },
 
     initializeUI() {
@@ -745,7 +771,16 @@ const ProjectManager = {
 
         // Event listeners
         manageProjectsBtn?.addEventListener('click', () => {
+            if (!this.isAdmin && !this.authenticate()) {
+                return;
+            }
             modal.classList.add('active');
+            // Clear the projects list and render it again
+            const projectsList = document.getElementById('projectsList');
+            if (projectsList) {
+                projectsList.innerHTML = '';
+                this.renderProjects();
+            }
         });
 
         closeModalBtn?.addEventListener('click', () => {
