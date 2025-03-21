@@ -418,6 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize music player
     musicPlayer.init();
     
+    // Initialize ProjectManager
+    ProjectManager.init();
+    
     // Initialize typing animation
     const roles = ['DEVELOPER', 'DESIGNER', 'INNOVATOR'];
     let currentRoleIndex = 0;

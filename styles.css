@@ -52,6 +52,7 @@ body {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-links {
@@ -474,6 +475,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .music-player.theme-glass .song-title,
@@ -953,6 +955,7 @@ body {
     opacity: 0;
     transform: translateY(-10px);
     transition: all 0.5s ease;
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-brand {
@@ -1238,20 +1241,17 @@ body {
     transform: scale(1.2);
 }
 
-/* Fix backdrop-filter for Safari */
-.navbar.scrolled {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+/* Theme-specific styles */
+.music-player.theme-dark #volume-slider {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.music-player.theme-glass {
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+.music-player.theme-light #volume-slider {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.navbar-alt {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+.music-player.theme-glass #volume-slider {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 /* Project Management Styles */
@@ -1268,10 +1268,33 @@ body {
     -webkit-backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal.active {
     display: flex !important;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--secondary-color);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
 }
 
 /* Ensure form is visible when active */
@@ -1285,18 +1308,6 @@ body {
     gap: 1rem;
     width: 100%;
     margin-top: 1.5rem;
-}
-
-.modal-content {
-    background: var(--secondary-color);
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .modal-header {
