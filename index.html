@@ -7,6 +7,8 @@
     <link rel="icon" type="image/png" href="assets/media/album-art/white@2x.png">
     <link rel="apple-touch-icon" href="assets/media/album-art/white@2x.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="new-components.css">
+    <link rel="stylesheet" href="projects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -148,28 +150,90 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title" data-aos="fade-up">FEATURED PROJECTS</h2>
-                    <button id="manageProjectsBtn" class="cta-button primary" data-aos="fade-up">
-                        <i class="fas fa-plus"></i> Add Project
-                    </button>
+                    <div class="project-filters" data-aos="fade-up">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="mobile">Mobile</button>
+                        <button class="filter-btn" data-filter="design">Design</button>
+                    </div>
                 </div>
-                <div class="project-grid">
-                    <div class="project-card" data-aos="fade-up">
-                        <img src="assets/media/project1.jpg" alt="Project 1" class="project-image">
-                        <div class="project-overlay">
-                            <h3 class="project-title">Project One</h3>
-                            <p class="project-description">A brief description of the project and its key features</p>
-                            <div class="project-links">
-                                <a href="#" class="cta-button primary">View Project</a>
+
+                <div class="project-grid" data-aos="fade-up">
+                    <div class="project-card" data-category="web">
+                        <div class="project-image-container">
+                            <img src="assets/media/project1.jpg" alt="E-Commerce Platform" class="project-image">
+                            <div class="project-hover">
+                                <div class="project-hover-content">
+                                    <h3 class="project-title">E-Commerce Platform</h3>
+                                    <div class="project-tags">
+                                        <span class="tag">React</span>
+                                        <span class="tag">Node.js</span>
+                                        <span class="tag">MongoDB</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="cta-button primary" data-action="view">Live Demo</a>
+                                        <a href="#" class="cta-button secondary" data-action="github">GitHub</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/media/project2.jpg" alt="Project 2" class="project-image">
-                        <div class="project-overlay">
-                            <h3 class="project-title">Project Two</h3>
-                            <p class="project-description">A brief description of the project and its key features</p>
-                            <div class="project-links">
-                                <a href="#" class="cta-button primary">View Project</a>
+
+                    <div class="project-card" data-category="design">
+                        <div class="project-image-container">
+                            <img src="assets/media/project2.jpg" alt="Travel App UI Design" class="project-image">
+                            <div class="project-hover">
+                                <div class="project-hover-content">
+                                    <h3 class="project-title">Travel App UI Design</h3>
+                                    <div class="project-tags">
+                                        <span class="tag">Figma</span>
+                                        <span class="tag">UI/UX</span>
+                                        <span class="tag">Prototyping</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="cta-button primary" data-action="view">View Design</a>
+                                        <a href="#" class="cta-button secondary" data-action="download">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="mobile">
+                        <div class="project-image-container">
+                            <img src="assets/media/project3.jpg" alt="Mobile App" class="project-image">
+                            <div class="project-hover">
+                                <div class="project-hover-content">
+                                    <h3 class="project-title">Mobile App</h3>
+                                    <div class="project-tags">
+                                        <span class="tag">React Native</span>
+                                        <span class="tag">Firebase</span>
+                                        <span class="tag">Push Notifications</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="cta-button primary" data-action="view">App Store</a>
+                                        <a href="#" class="cta-button secondary" data-action="github">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Details Modal -->
+                <div id="projectDetailsModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <div class="modal-body">
+                            <div class="modal-image">
+                                <img src="" alt="" id="modalProjectImage">
+                            </div>
+                            <div class="modal-info">
+                                <h2 id="modalProjectTitle"></h2>
+                                <p id="modalProjectDescription"></p>
+                                <div class="modal-tags" id="modalProjectTags"></div>
+                                <div class="modal-links" id="modalProjectLinks"></div>
+                                <div class="modal-features" id="modalProjectFeatures"></div>
                             </div>
                         </div>
                     </div>
@@ -298,6 +362,8 @@
     <script src="scroll-effects.js"></script>
     <script src="theme-switcher.js"></script>
     <script src="3d-background.js"></script>
+    <script src="projects.js" defer></script>
+    <script src="script.js" defer></script>
 
     <!-- Project Management Modal -->
     <div id="projectModal" class="modal">
