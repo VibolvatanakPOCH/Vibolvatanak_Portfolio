@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="assets/media/album-art/white@2x.png">
     <link rel="apple-touch-icon" href="assets/media/album-art/white@2x.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="new-components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -118,55 +117,34 @@
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">ABOUT ME</h2>
                 <div class="about-content">
-                    <div class="about-summary" data-aos="fade-up">
-                        <p class="lead-text">I'm a passionate developer and designer with a focus on creating innovative, user-centered digital experiences that combine cutting-edge technology with elegant design.</p>
-                        <p>With expertise in both frontend and backend development, I bring a holistic approach to every project, ensuring seamless functionality and stunning aesthetics. My goal is to build digital solutions that not only meet technical requirements but also delight users and exceed expectations.</p>
-                    </div>
-                    
-                    <div class="skills-container" data-aos="fade-up">
-                        <div class="skills-grid">
-                            <div class="skill-item" data-aos="fade-up">
-                                <i class="fas fa-code skill-icon"></i>
-                                <div class="skill-content">
-                                    <h3>DEVELOPMENT</h3>
-                                    <p>Creating elegant solutions with clean, efficient code</p>
-                                </div>
+                    <div class="skills">
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
                             </div>
-                            <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-                                <i class="fas fa-paint-brush skill-icon"></i>
-                                <div class="skill-content">
-                                    <h3>DESIGN</h3>
-                                    <p>Crafting beautiful, intuitive interfaces with attention to detail</p>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
-                                <i class="fas fa-lightbulb skill-icon"></i>
-                                <div class="skill-content">
-                                    <h3>INNOVATION</h3>
-                                    <p>Pushing boundaries with cutting-edge solutions</p>
-                                </div>
-                            </div>
+                            <h3>DEVELOPMENT</h3>
+                            <p>Full-stack development with modern technologies</p>
                         </div>
-                        
-                        <div id="skills-chart-container" data-aos="fade-up">
-                            <!-- Skills chart will be rendered here -->
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="skill-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h3>DESIGN</h3>
+                            <p>Creative and intuitive user interfaces</p>
+                        </div>
+                        <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="skill-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>INNOVATION</h3>
+                            <p>Pushing boundaries with cutting-edge solutions</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="testimonials-section">
-            <div class="testimonials-overlay"></div>
-            <div class="container testimonials-container">
-                <h2 class="section-title" data-aos="fade-up">WHAT CLIENTS SAY</h2>
-                <div id="testimonials-container">
-                    <!-- Testimonials carousel will be rendered here -->
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="projects portfolio-section">
+        <section id="projects" class="projects">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title" data-aos="fade-up">FEATURED PROJECTS</h2>
@@ -174,41 +152,22 @@
                         <i class="fas fa-plus"></i> Add Project
                     </button>
                 </div>
-                
-                <div id="portfolio-gallery" data-aos="fade-up">
-                    <!-- Portfolio gallery will be rendered here -->
-                </div>
-                
-                <!-- Hidden original project grid that will be used by the portfolio gallery -->
-                <div class="project-grid" style="display: none;">
-                    <div class="project-card">
+                <div class="project-grid">
+                    <div class="project-card" data-aos="fade-up">
                         <img src="assets/media/project1.jpg" alt="Project 1" class="project-image">
                         <div class="project-overlay">
-                            <h3 class="project-title">E-Commerce Platform</h3>
-                            <p class="project-description">A fully responsive e-commerce platform with user authentication, product filtering, and secure payment processing.</p>
-                            <div class="project-technologies">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                                <span class="tech-tag">Stripe API</span>
-                            </div>
+                            <h3 class="project-title">Project One</h3>
+                            <p class="project-description">A brief description of the project and its key features</p>
                             <div class="project-links">
-                                <a href="#" class="cta-button primary">Live Demo</a>
-                                <a href="#" class="cta-button secondary">GitHub</a>
+                                <a href="#" class="cta-button primary">View Project</a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <img src="assets/media/project2.jpg" alt="Project 2" class="project-image">
                         <div class="project-overlay">
-                            <h3 class="project-title">Travel App UI Design</h3>
-                            <p class="project-description">A modern travel application UI design with interactive maps, booking system, and personalized recommendations.</p>
-                            <div class="project-technologies">
-                                <span class="tech-tag">Figma</span>
-                                <span class="tech-tag">Adobe XD</span>
-                                <span class="tech-tag">UI/UX</span>
-                                <span class="tech-tag">Prototyping</span>
-                            </div>
+                            <h3 class="project-title">Project Two</h3>
+                            <p class="project-description">A brief description of the project and its key features</p>
                             <div class="project-links">
                                 <a href="#" class="cta-button primary">View Project</a>
                             </div>
@@ -222,37 +181,23 @@
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">SKILLS & TECHNOLOGIES</h2>
                 
-                <div class="skills-container">
-                    <div id="skills-chart-container" data-aos="fade-up">
-                        <!-- Interactive skills chart will be rendered here -->
+                <div class="skills-track skills-track-left">
+                    <div class="skill-logo">
+                        <img src="assets/icons/react.svg" alt="React">
                     </div>
-                    
-                    <div class="skills-description" data-aos="fade-up">
-                        <h3>Expertise That Delivers Results</h3>
-                        <p>With a focus on modern web technologies, I create engaging user experiences through clean, efficient code and thoughtful design.</p>
-                        <p>Hover over the skills chart to see detailed proficiency levels in each technology.</p>
-                        <div class="skills-highlights">
-                            <div class="skill-highlight">
-                                <i class="fas fa-code"></i>
-                                <h4>Frontend</h4>
-                                <p>JavaScript, React, Three.js, HTML/CSS</p>
-                            </div>
-                            <div class="skill-highlight">
-                                <i class="fas fa-server"></i>
-                                <h4>Backend</h4>
-                                <p>Node.js, Express, Python, MongoDB</p>
-                            </div>
-                            <div class="skill-highlight">
-                                <i class="fas fa-paint-brush"></i>
-                                <h4>Design</h4>
-                                <p>UI/UX, Figma, Animation</p>
-                            </div>
-                        </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/nodejs.svg" alt="Node.js">
                     </div>
-                </div>
-                
-                <!-- Hidden skills track for legacy support -->
-                <div class="skills-track skills-track-left" style="display: none;">
+                    <div class="skill-logo">
+                        <img src="assets/icons/javascript.svg" alt="JavaScript">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/typescript.svg" alt="TypeScript">
+                    </div>
+                    <div class="skill-logo">
+                        <img src="assets/icons/python.svg" alt="Python">
+                    </div>
+                    <div class="skill-logo">
                         <img src="assets/icons/aws.svg" alt="AWS">
                     </div>
                 </div>
@@ -284,20 +229,13 @@
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">MY JOURNEY</h2>
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">2023 - Present</div>
                             <h3>Software Engineer</h3>
                             <h4>Codeium</h4>
                             <p>Working on cutting-edge AI-powered developer tools, focusing on improving developer productivity and code quality.</p>
-                            <div class="timeline-details">
-                                <p>Leading development of innovative features that enhance the developer experience through AI assistance and code intelligence.</p>
-                                <ul class="timeline-achievements">
-                                    <li>Implemented key features that increased user adoption by 45%</li>
-                                    <li>Optimized performance resulting in 60% faster response times</li>
-                                    <li>Collaborated with the ML team to improve code suggestions accuracy</li>
-                                </ul>
-                            </div>
                             <ul class="timeline-tags">
                                 <li>Python</li>
                                 <li>TypeScript</li>
@@ -345,49 +283,12 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">GET IN TOUCH</h2>
-                <div class="contact-content" data-aos="fade-up">
-                    <div class="contact-info">
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Email</h3>
-                                <p><a href="mailto:hello@vibolvatanak.com">hello@vibolvatanak.com</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Location</h3>
-                                <p>Phnom Penh, Cambodia</p>
-                            </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="#" class="social-link" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="social-link" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <form class="contact-form" data-aos="fade-up">
-                        <input type="text" name="name" id="name" placeholder="" required>
-                        <input type="email" name="email" id="email" placeholder="" required>
-                        <input type="text" name="subject" id="subject" placeholder="" required>
-                        <textarea name="message" id="message" placeholder="" required></textarea>
-                        <button type="submit" class="cta-button primary">SEND MESSAGE</button>
-                    </form>
-                </div>
+                <form class="contact-form" data-aos="fade-up">
+                    <input type="text" placeholder="YOUR NAME" required>
+                    <input type="email" placeholder="YOUR EMAIL" required>
+                    <textarea placeholder="YOUR MESSAGE" required></textarea>
+                    <button type="submit" class="cta-button primary">SEND MESSAGE</button>
+                </form>
             </div>
         </section>
     </main>
@@ -397,11 +298,6 @@
     <script src="scroll-effects.js"></script>
     <script src="theme-switcher.js"></script>
     <script src="3d-background.js"></script>
-    <script src="skills-chart.js"></script>
-    <script src="testimonials-carousel.js"></script>
-    <script src="interactive-timeline.js"></script>
-    <script src="contact-form.js"></script>
-    <script src="portfolio-gallery.js"></script>
 
     <!-- Project Management Modal -->
     <div id="projectModal" class="modal">
