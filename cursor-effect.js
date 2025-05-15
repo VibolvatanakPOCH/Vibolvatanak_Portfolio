@@ -40,7 +40,8 @@ class CustomCursor {
 
     enableCursor() {
         this.isActive = true;
-        document.body.classList.add('custom-cursor-active');
+        // Remove the class that hides the default cursor
+        document.body.classList.remove('custom-cursor-active');
         this.cursor.style.display = 'block';
         this.cursorDot.style.display = 'block';
     }

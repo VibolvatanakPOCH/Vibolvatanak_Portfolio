@@ -4,13 +4,23 @@ class ThemeSwitcher {
         this.darkTheme = {
             '--bg-color': '#0a0a0a',
             '--secondary-color': '#1A1A1A',
-            '--text-color': '#ffffff'
+            '--text-color': '#ffffff',
+            '--card-bg': 'rgba(255, 255, 255, 0.05)',
+            '--card-border': 'rgba(255, 255, 255, 0.1)',
+            '--card-shadow': '0 10px 30px rgba(0, 0, 0, 0.2)',
+            '--nav-bg': 'rgba(0, 0, 0, 0.8)',
+            '--modal-bg': '#1A1A1A'
         };
         
         this.lightTheme = {
             '--bg-color': '#f5f5f5',
             '--secondary-color': '#e0e0e0',
-            '--text-color': '#121212'
+            '--text-color': '#121212',
+            '--card-bg': 'rgba(255, 255, 255, 0.9)',
+            '--card-border': 'rgba(0, 0, 0, 0.1)',
+            '--card-shadow': '0 10px 30px rgba(0, 0, 0, 0.1)',
+            '--nav-bg': 'rgba(255, 255, 255, 0.8)',
+            '--modal-bg': '#ffffff'
         };
         
         this.currentTheme = 'dark';
@@ -87,6 +97,12 @@ class ThemeSwitcher {
             // Remove light class
             document.body.classList.remove('light-theme');
             document.body.classList.add('dark-theme');
+            
+            // Update hero section background
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.style.background = 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)';
+            }
         } else {
             // Apply light theme
             Object.entries(this.lightTheme).forEach(([property, value]) => {
@@ -99,6 +115,12 @@ class ThemeSwitcher {
             // Add light class
             document.body.classList.remove('dark-theme');
             document.body.classList.add('light-theme');
+            
+            // Update hero section background
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.style.background = 'linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%)';
+            }
         }
         
         // Dispatch theme change event
