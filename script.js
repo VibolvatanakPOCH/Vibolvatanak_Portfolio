@@ -5,42 +5,42 @@ const musicPlayer = {
             title: "Bangarang",
             artist: "Skrillex ft. Sirah",
             url: "assets/media/SKRILLEX - Bangarang feat. Sirah [Official Music Video].mp3",
-            art: "assets/media/album-art/bangarang.jpg",
+            art: "assets/media/album-art/bangarang.jpg?v=2",
             theme: "dark"
         },
         {
             title: "Scary Monsters And Nice Sprites",
             artist: "Skrillex",
             url: "assets/media/Skrillex - Scary Monsters And Nice Sprites (Official Audio).mp3",
-            art: "assets/media/album-art/scary-monsters.jpg",
+            art: "assets/media/album-art/scary-monsters.jpg?v=2",
             theme: "light"
         },
         {
             title: "Badders",
             artist: "Skrillex, PEEKABOO, Flowdan & G-Rex",
             url: "assets/media/Skrillex, PEEKABOO, Flowdan, & G-Rex - Badders (Official Audio).mp3",
-            art: "assets/media/album-art/badders.jpg",
+            art: "assets/media/album-art/badders.jpg?v=2",
             theme: "dynamic"
         },
         {
             title: "Big Dawgs",
             artist: "Hanumankind ft. Kalmi",
             url: "assets/media/Hanumankind  Big Dawgs  Ft. Kalmi (Official Music Video)  Def Jam India.mp3",
-            art: "assets/media/album-art/big-dawgs.jpg",
+            art: "assets/media/album-art/big-dawgs.jpg?v=2",
             theme: "dark"
         },
         {
             title: "lalala",
             artist: "bbno$ & y2k",
             url: "assets/media/bbno$, y2k - lalala (Lyrics)  did I really just forget that melody_.mp3",
-            art: "assets/media/album-art/lalala.jpg",
+            art: "assets/media/album-art/lalala.jpg?v=2",
             theme: "light"
         },
         {
             title: "Chess Type Beat",
             artist: "Dancing Rat",
             url: "assets/media/𝐂𝐡𝐞𝐬𝐬 𝐓𝐲𝐩𝐞 𝐁𝐞𝐚𝐭 (𝐒𝐥𝐨𝐰𝐞𝐝𝐓𝐢𝐤𝐭𝐨𝐤 𝐕𝐞𝐫𝐬𝐢𝐨𝐧) 𝐱 𝐃𝐚𝐧𝐜𝐢𝐧𝐠 𝐑𝐚𝐭 - 𝐉𝐞𝐬𝐮𝐬 𝐌𝐮𝐬𝐜.mp3",
-            art: "assets/media/album-art/chess-type-beat.jpg",
+            art: "assets/media/album-art/chess-type-beat.jpg?v=2",
             theme: "glass"
         },
         {
@@ -54,7 +54,7 @@ const musicPlayer = {
             title: "Round and Round",
             artist: "Mingle Game Song",
             url: "assets/media/Mingle Game Song Round and Round Lyric Video  Squid Game_ Season 2  Netflix.mp3",
-            art: "assets/media/album-art/round-and-round.jpg",
+            art: "assets/media/album-art/round-and-round.jpg?v=2",
             theme: "glass"
         }
     ],
