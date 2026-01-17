@@ -2013,6 +2013,39 @@ main, footer {
     color: var(--muted-color);
 }
 
+.about-facts {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.about-fact {
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    display: grid;
+    gap: 0.35rem;
+}
+
+.fact-label {
+    text-transform: uppercase;
+    letter-spacing: 0.16rem;
+    font-size: 0.7rem;
+    color: var(--muted-color);
+}
+
+.fact-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+}
+
+.about-fact p {
+    margin: 0;
+    color: var(--muted-color);
+}
+
 .azuki-projects .section-header {
     display: flex;
     flex-direction: column;
