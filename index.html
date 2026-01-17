@@ -12,11 +12,17 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body class="professional-ui">
-<a href="#" class="corner-logo"><img src="assets/media/album-art/white@2x.png" alt="Corner Logo"></a>
-    
-    <!-- Professional Navbar -->
-    <nav class="navbar">
+<body class="professional-ui azuki-shell">
+    <div class="noise-layer" aria-hidden="true"></div>
+    <a href="#home" class="corner-logo" aria-label="Back to top">
+        <img src="assets/media/album-art/white@2x.png" alt="Corner Logo">
+    </a>
+
+    <nav class="navbar azuki-nav">
+        <div class="nav-branding">
+            <span class="brand-mark">POCH</span>
+            <span class="brand-subtitle">PORTFOLIO</span>
+        </div>
         <div class="nav-links">
             <a href="#home">HOME</a>
             <a href="#about">ABOUT</a>
@@ -27,8 +33,7 @@
         <button class="teleport-btn" onclick="toggleUI()">TELEPORT</button>
     </nav>
 
-    <!-- Teleport Navbar (Hidden by default) -->
-    <nav class="navbar-alt hidden">
+    <nav class="navbar-alt hidden azuki-nav-alt">
         <div class="nav-brand">
             <img src="assets/media/album-art/white@2x.png" alt="Logo">
             <span>VIBOLVATANAK</span>
@@ -70,7 +75,7 @@
                     </button>
                     <div class="volume-control">
                         <button id="volume-icon" class="fas fa-volume-up" aria-label="Toggle mute"></button>
-                        <input type="range" id="volume-slider" min="0" max="100" value="50" 
+                        <input type="range" id="volume-slider" min="0" max="100" value="50"
                                aria-label="Volume control" title="Adjust volume">
                     </div>
                 </div>
@@ -82,73 +87,108 @@
     </div>
 
     <main>
-        <section id="home" class="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="gradient-reveal">
-                    <h1 class="reveal-text">Hi, I'm</h1>
-                    <h1 class="reveal-text name-text">POCH VIBOLVATANAK</h1>
+        <section id="home" class="hero azuki-hero">
+            <div class="hero-backdrop"></div>
+            <div class="hero-grid">
+                <div class="hero-copy" data-aos="fade-up">
+                    <span class="hero-tag">DIGITAL CREATOR</span>
+                    <h1 class="hero-title">POCH VIBOLVATANAK</h1>
+                    <p class="hero-description">
+                        I build cinematic web experiences that blend design, storytelling, and technology.
+                        From immersive UI to fast, modern apps, I create bold digital worlds for forward-looking brands.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="cta-button primary" href="#projects">View Projects</a>
+                        <a class="cta-button secondary" href="#contact">Let’s Build</a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric-card">
+                            <span class="metric-value">5+</span>
+                            <span class="metric-label">Years Building</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">20+</span>
+                            <span class="metric-label">Projects Shipped</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Craft Focus</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="role-wrapper">
-                    <span class="role-text"></span>
-                    <span class="cursor"></span>
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="hero-orb"></div>
+                    <div class="hero-orb hero-orb-alt"></div>
+                    <div class="hero-frame">
+                        <div class="hero-frame-inner">
+                            <span class="frame-label">NOW BUILDING</span>
+                            <h2>Immersive Digital Worlds</h2>
+                            <p>WebGL, motion systems, branded experiences, and interaction design.</p>
+                            <div class="frame-tags">
+                                <span>UI/UX</span>
+                                <span>3D</span>
+                                <span>Motion</span>
+                                <span>Full-Stack</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <span class="scroll-line"></span>
             </div>
         </section>
 
-        <!-- Test sections for theme switching -->
-        <section id="test-dark" class="test-section">
-            Dark Background
-        </section>
-        
-        <section id="test-light" class="test-section">
-            Light Background
-        </section>
-        
-        <section id="test-gradient" class="test-section">
-            Gradient Background
-        </section>
-        
-        <section id="test-image" class="test-section">
-            Image Background
+        <section class="marquee-section" aria-label="Studio highlights">
+            <div class="marquee-track">
+                <span>FUTURE WEB</span>
+                <span>IMMERSIVE UI</span>
+                <span>BRAND SYSTEMS</span>
+                <span>CREATIVE CODING</span>
+                <span>3D SCENES</span>
+                <span>INTERACTIVE STORYTELLING</span>
+            </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="about azuki-about">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">ABOUT ME</h2>
-                <div class="about-content">
-                    <div class="skills">
-                        <div class="skill-item" data-aos="fade-up" data-aos-delay="100">
-                            <div class="skill-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>DEVELOPMENT</h3>
-                            <p>Full-stack development with modern technologies</p>
+                <div class="about-grid">
+                    <div class="about-copy" data-aos="fade-up">
+                        <h2 class="section-title">ABOUT THE STUDIO</h2>
+                        <p class="section-lead">
+                            I build digital universes where design, code, and motion become a single language.
+                            The goal is simple: craft experiences that feel alive, premium, and unmistakably yours.
+                        </p>
+                    </div>
+                    <div class="about-panels" data-aos="fade-up" data-aos-delay="150">
+                        <div class="about-panel">
+                            <h3>Creative Direction</h3>
+                            <p>Brand systems, visual strategy, and art direction for bold launches.</p>
                         </div>
-                        <div class="skill-item" data-aos="fade-up" data-aos-delay="200">
-                            <div class="skill-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <h3>DESIGN</h3>
-                            <p>Creative and intuitive user interfaces</p>
+                        <div class="about-panel">
+                            <h3>Immersive Build</h3>
+                            <p>Motion systems, layered UI, and WebGL scenes for elevated storytelling.</p>
                         </div>
-                        <div class="skill-item" data-aos="fade-up" data-aos-delay="300">
-                            <div class="skill-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3>INNOVATION</h3>
-                            <p>Pushing boundaries with cutting-edge solutions</p>
+                        <div class="about-panel">
+                            <h3>Engineering</h3>
+                            <p>High-performance frontends, backend logic, and production-ready delivery.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="projects">
+        <section id="projects" class="projects azuki-projects">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title" data-aos="fade-up">FEATURED PROJECTS</h2>
-                    <div class="project-filters" data-aos="fade-up">
+                    <div>
+                        <h2 class="section-title" data-aos="fade-up">FEATURED WORK</h2>
+                        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+                            Selected builds inspired by Azuki-level energy: clean, cinematic, and immersive.
+                        </p>
+                    </div>
+                    <div class="project-filters" data-aos="fade-up" data-aos-delay="200">
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="web">Web</button>
                         <button class="filter-btn" data-filter="mobile">Mobile</button>
@@ -218,7 +258,6 @@
                     </div>
                 </div>
 
-                <!-- Project Details Modal -->
                 <div id="projectDetailsModal" class="modal">
                     <div class="modal-content">
                         <span class="close-modal">&times;</span>
@@ -239,55 +278,32 @@
             </div>
         </section>
 
-        <section class="skills-section">
+        <section class="gallery azuki-gallery">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">SKILLS & TECHNOLOGIES</h2>
-                
-                <div class="skills-track skills-track-left">
-                    <div class="skill-logo">
-                        <img src="assets/icons/react.svg" alt="React">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/nodejs.svg" alt="Node.js">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/javascript.svg" alt="JavaScript">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/typescript.svg" alt="TypeScript">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/python.svg" alt="Python">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/aws.svg" alt="AWS">
-                    </div>
+                <div class="section-header">
+                    <h2 class="section-title" data-aos="fade-up">IMMERSIVE GALLERY</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+                        A taste of the worlds we can build together.
+                    </p>
                 </div>
-                
-                <div class="skills-track skills-track-right">
-                    <div class="skill-logo">
-                        <img src="assets/icons/docker.svg" alt="Docker">
+                <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-card tall">
+                        <img src="assets/media/project1.jpg" alt="Gallery visual">
                     </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/kubernetes.svg" alt="Kubernetes">
+                    <div class="gallery-card">
+                        <img src="assets/media/project2.jpg" alt="Gallery visual">
                     </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/mongodb.svg" alt="MongoDB">
+                    <div class="gallery-card">
+                        <img src="assets/media/project3.jpg" alt="Gallery visual">
                     </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/postgresql.svg" alt="PostgreSQL">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/redis.svg" alt="Redis">
-                    </div>
-                    <div class="skill-logo">
-                        <img src="assets/icons/graphql.svg" alt="GraphQL">
+                    <div class="gallery-card wide">
+                        <img src="assets/media/album-art.jpg" alt="Gallery visual">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="journey" class="journey">
+        <section id="journey" class="journey azuki-journey">
             <div class="container">
                 <h2 class="section-title" data-aos="fade-up">MY JOURNEY</h2>
                 <div class="timeline">
@@ -297,7 +313,7 @@
                             <div class="timeline-date">2023 - Present</div>
                             <h3>Software Engineer</h3>
                             <h4>Codeium</h4>
-                            <p>Working on cutting-edge AI-powered developer tools, focusing on improving developer productivity and code quality.</p>
+                            <p>Building AI-powered developer tools that blend polished UX with strong engineering.</p>
                             <ul class="timeline-tags">
                                 <li>Python</li>
                                 <li>TypeScript</li>
@@ -313,7 +329,7 @@
                             <div class="timeline-date">2021 - 2023</div>
                             <h3>Full Stack Developer</h3>
                             <h4>Freelance</h4>
-                            <p>Developed custom web applications and e-commerce solutions for various clients, focusing on modern technologies and best practices.</p>
+                            <p>Delivered brand platforms and product builds for global clients.</p>
                             <ul class="timeline-tags">
                                 <li>JavaScript</li>
                                 <li>Node.js</li>
@@ -329,7 +345,7 @@
                             <div class="timeline-date">2019 - 2021</div>
                             <h3>Junior Web Developer</h3>
                             <h4>Tech Startup</h4>
-                            <p>Started my journey in web development, working on frontend development and UI/UX design for various projects.</p>
+                            <p>Focused on polished UI, motion, and scalable front-end systems.</p>
                             <ul class="timeline-tags">
                                 <li>HTML/CSS</li>
                                 <li>JavaScript</li>
@@ -342,18 +358,82 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section class="skills-section azuki-skills">
             <div class="container">
-                <h2 class="section-title" data-aos="fade-up">GET IN TOUCH</h2>
-                <form class="contact-form" data-aos="fade-up">
-                    <input type="text" placeholder="YOUR NAME" required>
-                    <input type="email" placeholder="YOUR EMAIL" required>
-                    <textarea placeholder="YOUR MESSAGE" required></textarea>
-                    <button type="submit" class="cta-button primary">SEND MESSAGE</button>
-                </form>
+                <div class="section-header">
+                    <h2 class="section-title" data-aos="fade-up">SKILLS & TECHNOLOGIES</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="120">
+                        Tooling for fast, future-ready experiences.
+                    </p>
+                </div>
+                <div class="skills-track skills-track-left">
+                    <div class="skill-logo"><img src="assets/icons/react.svg" alt="React"></div>
+                    <div class="skill-logo"><img src="assets/icons/nodejs.svg" alt="Node.js"></div>
+                    <div class="skill-logo"><img src="assets/icons/javascript.svg" alt="JavaScript"></div>
+                    <div class="skill-logo"><img src="assets/icons/typescript.svg" alt="TypeScript"></div>
+                    <div class="skill-logo"><img src="assets/icons/python.svg" alt="Python"></div>
+                    <div class="skill-logo"><img src="assets/icons/aws.svg" alt="AWS"></div>
+                </div>
+                <div class="skills-track skills-track-right">
+                    <div class="skill-logo"><img src="assets/icons/docker.svg" alt="Docker"></div>
+                    <div class="skill-logo"><img src="assets/icons/kubernetes.svg" alt="Kubernetes"></div>
+                    <div class="skill-logo"><img src="assets/icons/mongodb.svg" alt="MongoDB"></div>
+                    <div class="skill-logo"><img src="assets/icons/postgresql.svg" alt="PostgreSQL"></div>
+                    <div class="skill-logo"><img src="assets/icons/redis.svg" alt="Redis"></div>
+                    <div class="skill-logo"><img src="assets/icons/graphql.svg" alt="GraphQL"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact azuki-contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-copy" data-aos="fade-up">
+                        <h2 class="section-title">LET’S BUILD SOMETHING ICONIC</h2>
+                        <p class="section-lead">
+                            Tell me about the world you want to create. I’ll help you design and ship it.
+                        </p>
+                        <div class="contact-details">
+                            <div>
+                                <span>Email</span>
+                                <p>hello@pochstudio.com</p>
+                            </div>
+                            <div>
+                                <span>Location</span>
+                                <p>Phnom Penh • Remote Worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" data-aos="fade-up" data-aos-delay="150">
+                        <input type="text" placeholder="YOUR NAME" required>
+                        <input type="email" placeholder="YOUR EMAIL" required>
+                        <textarea placeholder="PROJECT BRIEF" required></textarea>
+                        <button type="submit" class="cta-button primary">SEND MESSAGE</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>POCH VIBOLVATANAK</h3>
+                    <p>Design-driven engineering for next-gen brands.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#journey">Journey</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-meta">
+                    <span>© 2025 Vibolvatanak</span>
+                    <span>Built for the next.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="cursor-effect.js"></script>
@@ -363,7 +443,6 @@
     <script src="projects.js" defer></script>
     <script src="script.js" defer></script>
 
-    <!-- Project Management Modal -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -374,8 +453,6 @@
                 <button id="addProjectBtn" class="cta-button primary">
                     <i class="fas fa-plus"></i> Add New Project
                 </button>
-                
-                <!-- Project Form -->
                 <form id="projectForm" class="project-form hidden">
                     <input type="hidden" id="projectId">
                     <div class="form-group">
@@ -407,11 +484,7 @@
                         <button type="button" class="cta-button secondary" id="cancelProjectBtn">Cancel</button>
                     </div>
                 </form>
-
-                <!-- Projects List -->
-                <div id="projectsList" class="projects-list">
-                    <!-- Projects will be dynamically added here -->
-                </div>
+                <div id="projectsList" class="projects-list"></div>
             </div>
         </div>
     </div>

@@ -1,20 +1,22 @@
 /* Modern CSS Reset and Variables */
 :root {
-    --primary-color: #E43D3D;
-    --secondary-color: #1A1A1A;
-    --accent-color: #00f7ff;
-    --text-color: #ffffff;
-    --bg-color: #0a0a0a;
+    --primary-color: #d8323f;
+    --secondary-color: #0d0f12;
+    --accent-color: #55e2c5;
+    --text-color: #f5f3ef;
+    --muted-color: rgba(245, 243, 239, 0.6);
+    --bg-color: #08090b;
     --card-bg: rgba(255, 255, 255, 0.05);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    --nav-bg: rgba(0, 0, 0, 0.8);
-    --modal-bg: #1A1A1A;
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --card-border: rgba(255, 255, 255, 0.12);
+    --card-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+    --nav-bg: rgba(8, 9, 11, 0.85);
+    --modal-bg: #101217;
+    --font-main: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-display: 'Bebas Neue', 'Space Grotesk', sans-serif;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -1694,4 +1696,432 @@ body.light-theme .custom-cursor {
 
 body.light-theme .cursor-dot {
     background-color: var(--primary-color);
+}
+
+/* --- Azuki-inspired layout overrides --- */
+body.azuki-shell {
+    background: radial-gradient(circle at top, rgba(63, 30, 34, 0.6), transparent 45%),
+                radial-gradient(circle at 20% 20%, rgba(37, 62, 67, 0.5), transparent 45%),
+                var(--bg-color);
+    color: var(--text-color);
+}
+
+.noise-layer {
+    position: fixed;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.12"/></svg>');
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: soft-light;
+}
+
+main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+.azuki-nav {
+    background: rgba(8, 9, 11, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    justify-content: space-between;
+}
+
+.azuki-nav .teleport-btn {
+    position: static;
+    padding: 0.65rem 1.4rem;
+    font-size: 0.75rem;
+    border-radius: 999px;
+}
+
+.nav-branding {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+}
+
+.brand-mark {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+}
+
+.brand-subtitle {
+    font-size: 0.65rem;
+    color: var(--muted-color);
+}
+
+.nav-links a {
+    font-size: 0.85rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+}
+
+.hero.azuki-hero {
+    background: radial-gradient(circle at 20% 20%, rgba(216, 50, 63, 0.3), transparent 45%),
+                radial-gradient(circle at 85% 30%, rgba(85, 226, 197, 0.25), transparent 40%);
+    padding: 8rem 4vw 6rem;
+}
+
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 9, 11, 0.9) 0%, rgba(8, 9, 11, 0.4) 40%, rgba(8, 9, 11, 0.95) 100%);
+    z-index: 0;
+}
+
+.hero-grid,
+.scroll-indicator {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 4rem;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    display: inline-flex;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.7rem;
+    color: var(--muted-color);
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 6rem);
+    letter-spacing: 0.08em;
+    margin: 1.5rem 0 1rem;
+}
+
+.hero-description {
+    max-width: 520px;
+    color: var(--muted-color);
+    font-size: 1.05rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1rem;
+    text-align: left;
+}
+
+.metric-value {
+    font-family: var(--font-display);
+    font-size: 2rem;
+}
+
+.metric-label {
+    color: var(--muted-color);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.15rem;
+}
+
+.hero-visual {
+    position: relative;
+    min-height: 420px;
+}
+
+.hero-orb {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(216, 50, 63, 0.9) 0%, rgba(216, 50, 63, 0) 70%);
+    top: 10%;
+    left: 10%;
+    filter: blur(2px);
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero-orb-alt {
+    width: 180px;
+    height: 180px;
+    top: 60%;
+    left: 50%;
+    background: radial-gradient(circle, rgba(85, 226, 197, 0.9) 0%, rgba(85, 226, 197, 0) 70%);
+    animation-delay: -3s;
+}
+
+.hero-frame {
+    position: relative;
+    z-index: 2;
+    background: rgba(11, 13, 18, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.hero-frame-inner h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.hero-frame-inner p {
+    color: var(--muted-color);
+    margin-bottom: 1.5rem;
+}
+
+.frame-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: var(--muted-color);
+    margin-bottom: 0.8rem;
+}
+
+.frame-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.frame-tags span {
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--muted-color);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted-color);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.2rem;
+}
+
+.scroll-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--primary-color), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+}
+
+.marquee-section {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(8, 9, 11, 0.8);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 2.5rem;
+    white-space: nowrap;
+    animation: marquee 18s linear infinite;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.section-title {
+    font-family: var(--font-display);
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.section-lead,
+.section-subtitle {
+    color: var(--muted-color);
+    max-width: 640px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-panels {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.about-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.about-panel h3 {
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    font-size: 0.95rem;
+}
+
+.about-panel p {
+    color: var(--muted-color);
+}
+
+.azuki-projects .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.gallery-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.gallery-card {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-card.tall {
+    grid-row: span 2;
+}
+
+.gallery-card.wide {
+    grid-column: span 2;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    align-items: start;
+}
+
+.contact-details {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact-details span {
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-size: 0.7rem;
+    color: var(--muted-color);
+}
+
+.site-footer {
+    padding: 3rem 0 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-content {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--muted-color);
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 0.75rem;
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: var(--muted-color);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+    .navbar.azuki-nav {
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .teleport-btn {
+        position: static;
+        width: 100%;
+    }
+
+    .hero.azuki-hero {
+        padding: 8rem 2rem 5rem;
+    }
+
+    .gallery-card.wide {
+        grid-column: span 1;
+    }
 }
