@@ -1,11 +1,3 @@
-// Initialize AOS
-AOS.init({
-    duration: 800,
-    easing: 'ease-out',
-    once: false,
-    mirror: true
-});
-
 // Music Player
 const musicPlayer = {
     songs: [
@@ -466,22 +458,26 @@ document.addEventListener('DOMContentLoaded', () => {
     typeRole();
     
     // Initialize AOS
-    AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: false,
-        mirror: true
-    });
+    if (window.AOS) {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: false,
+            mirror: true
+        });
+    }
 
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 });
 
 // Glitch Text Effect
@@ -489,6 +485,7 @@ const glitchText = document.querySelector('.glitch-text');
 let glitchInterval;
 
 function startGlitchEffect() {
+    if (!glitchText) return;
     const originalText = glitchText.textContent;
     const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
     
@@ -518,36 +515,48 @@ function startGlitchEffect() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetSelector = this.getAttribute('href');
+        if (!targetSelector || targetSelector === '#') return;
+        const target = document.querySelector(targetSelector);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
 // Project Cards Animation
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'scale(1.02)';
-        card.style.transition = 'transform 0.3s ease';
+function applyProjectCardHover() {
+    document.querySelectorAll('.project-card').forEach(card => {
+        if (card.dataset.hoverBound) return;
+        card.dataset.hoverBound = 'true';
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.02)';
+            card.style.transition = 'transform 0.3s ease';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'scale(1)';
-    });
-});
+}
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     startGlitchEffect();
+    applyProjectCardHover();
     
     // Add fade-in animation to hero content
     const heroContent = document.querySelector('.hero-content');
-    heroContent.style.opacity = '0';
-    setTimeout(() => {
-        heroContent.style.transition = 'opacity 1s ease';
-        heroContent.style.opacity = '1';
-    }, 500);
+    if (heroContent) {
+        heroContent.style.opacity = '0';
+        setTimeout(() => {
+            heroContent.style.transition = 'opacity 1s ease';
+            heroContent.style.opacity = '1';
+        }, 500);
+    }
 });
 
 // Skill items hover effect
@@ -569,73 +578,79 @@ skillItems.forEach(item => {
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-});
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+}
 
 // Particles.js Configuration
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 80,
-            density: {
+if (window.particlesJS && document.getElementById('particles-js')) {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#ffffff'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.5,
+                random: false
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
                 enable: true,
-                value_area: 800
+                distance: 150,
+                color: '#ffffff',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 6,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
             }
         },
-        color: {
-            value: '#ffffff'
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'repulse'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            }
         },
-        shape: {
-            type: 'circle'
-        },
-        opacity: {
-            value: 0.5,
-            random: false
-        },
-        size: {
-            value: 3,
-            random: true
-        },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#ffffff',
-            opacity: 0.4,
-            width: 1
-        },
-        move: {
-            enable: true,
-            speed: 6,
-            direction: 'none',
-            random: false,
-            straight: false,
-            out_mode: 'out',
-            bounce: false
-        }
-    },
-    interactivity: {
-        detect_on: 'canvas',
-        events: {
-            onhover: {
-                enable: true,
-                mode: 'repulse'
-            },
-            onclick: {
-                enable: true,
-                mode: 'push'
-            },
-            resize: true
-        }
-    },
-    retina_detect: true
-});
+        retina_detect: true
+    });
+}
 
 // Logo Particles Animation
 const logoParticles = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const logoContainer = document.querySelector('.logo-particles');
+
+    if (!logoContainer) return;
     
     canvas.width = logoContainer.offsetWidth;
     canvas.height = logoContainer.offsetHeight;
@@ -692,12 +707,14 @@ logoParticles();
 
 // Form Submission
 const contactForm = document.querySelector('.contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Message sent successfully!');
-    contactForm.reset();
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Message sent successfully!');
+        contactForm.reset();
+    });
+}
 
 // Intersection Observer for Fade-in Animation
 const observerOptions = {
@@ -875,6 +892,7 @@ const ProjectManager = {
     renderProjectsGrid() {
         const projectGrid = document.querySelector('.project-grid');
         if (!projectGrid) return;
+        if (!this.projects.length) return;
 
         projectGrid.innerHTML = this.projects.map(project => `
             <div class="project-card" data-aos="fade-up">
@@ -900,6 +918,8 @@ const ProjectManager = {
                 </div>
             </div>
         `).join('');
+
+        applyProjectCardHover();
     },
 
     saveProject() {
@@ -968,8 +988,3 @@ const ProjectManager = {
         addProjectBtn.classList.remove('hidden');
     }
 };
-
-// Initialize ProjectManager when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    ProjectManager.init();
-});
